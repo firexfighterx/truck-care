@@ -11,9 +11,14 @@
   "devDependencies": {
     "browserify": "^13.0.1",
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
     "gulp-connect": "^4.1.0",
     "gulp-open": "^2.0.0",
     "reactify": "^1.1.1",
     "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "jquery": "^3.0.0"
   }
 }
