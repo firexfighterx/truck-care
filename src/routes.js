@@ -10,7 +10,7 @@ var Home = require('./components/home');
 
 var routes = (
   <Router history={hashHistory}>
-    <Route path="/" component={App}/>
+    <Route path="/" component={Home}/>
     <Route path="/home" component={Home}/>
     <Route path="/about" component={About}/>
   </Router>

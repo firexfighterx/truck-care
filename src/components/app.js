@@ -3,7 +3,6 @@
 var React = require('react');
 var Header = require('./common/header');
 var RouteHandler = require('react-router').RouteHandler;
-var Routes = require('./routes');
 $ = jQuery = require('jquery');
 
 var App = React.createClass({
