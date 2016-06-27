@@ -5,7 +5,10 @@ var React = require('react');
 var About = React.createClass({
   render: function(){
     return (
-      <div>About my funckin site</div>
+          <div>
+            <h2>About Page</h2>
+            <p>About info coming soon</p>
+          </div>
     );
   }
 });
