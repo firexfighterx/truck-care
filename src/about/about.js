@@ -1,7 +1,7 @@
 import React from 'react';
 
 class About extends React.Component{
-  render(){
+  renter(){
     return (
       <div>This is the about page </div>
     );
