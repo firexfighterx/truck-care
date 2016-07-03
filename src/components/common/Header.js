@@ -1,13 +1,14 @@
 import React, {PropTypes} from 'react';
 import {Link, IndexLink} from 'react-router';
+import NavLink from './NavLink';
 
 const Header = () => {
-  return (
-    <ul className="nav nav-tabs">
-      <li><IndexLink to="/" activeClassName="btn btn-link">Home</IndexLink></li>
-      <li><Link to="/about" activeClassName="btn btn-link">About Bitches</Link></li>
-    </ul>
-  );
+    return (
+        <ul className="nav nav-pills">
+            <NavLink to="/" isIndex={true}>Home</NavLink>
+            <NavLink to="about">About Bitches</NavLink>
+        </ul>
+    );
 };
 
 export default Header;

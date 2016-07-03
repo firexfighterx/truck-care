@@ -4,7 +4,7 @@
   "description": "Handles Truck Care Details for FCFD",
   "scripts": {
     "prestart": "babel-node tools/startMessage.js",
-    "start": "npm-run-all --parallel test:watch open:src lint:watch",
+    "start": "npm-run-all --parallel open:src lint:watch",
     "open:src": "babel-node tools/srcServer.js",
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
     "lint:watch": "npm run lint -- --watch",
@@ -66,6 +66,7 @@
     "redux-immutable-state-invariant": "^1.2.3",
     "redux-mock-store": "^1.0.2",
     "rimraf": "^2.5.2",
+    "sinon": "^1.17.4",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.0",
