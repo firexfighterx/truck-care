@@ -1,5 +1,5 @@
 import expect from 'expect';
-import NavLink from '../components/common/NavLink';
+import NavLink from '../../../components/common/NavLink';
 import * as ShallowTestUtils from 'react-shallow-testutils';
 import { Link, IndexLink } from 'react-router';
 
