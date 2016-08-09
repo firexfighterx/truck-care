@@ -25,7 +25,7 @@ describe('NavLink', () => {
         let result = testObject.render();
         let linkItems = ShallowTestUtils.findAllWithType(result, Link);
 
-        expect(result.type).toEqual('li');
+        expect(result.type).toEqual(Link);
         expect(linkItems.length).toEqual(1);
         expect(linkItems[0].props.children).toEqual(LINK_TEXT);
         expect(linkItems[0].props.to).toEqual(TO);
@@ -52,7 +52,7 @@ describe('NavLink', () => {
 
         let result = testObject.render();
 
-        expect(result.props.className).toEqual("active");
+        expect(result.props.className).toEqual("list-group-item active");
     });
 
 
@@ -76,7 +76,7 @@ describe('NavLink', () => {
 
         let result = testObject.render();
 
-        expect(result.props.className).toEqual("");
+        expect(result.props.className).toEqual("list-group-item");
     });
 
 
@@ -102,7 +102,7 @@ describe('NavLink', () => {
         let result = testObject.render();
         let indexLink = ShallowTestUtils.findAllWithType(result, IndexLink);
 
-        expect(result.type).toEqual('li');
+        expect(result.type).toEqual(IndexLink);
         expect(indexLink.length).toEqual(1);
         expect(indexLink[0].props.children).toEqual(LINK_TEXT);
         expect(indexLink[0].props.to).toEqual(TO);

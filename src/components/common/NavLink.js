@@ -10,19 +10,19 @@ class NavLink extends React.Component {
     render() {
         let isActive = this.context.router.isActive(this.props.to, true);
         let activeClass = isActive
-            ? "active"
-            : "";
+            ? "list-group-item active"
+            : "list-group-item";
 
         let navigationLink = this.props.isIndex
-            ? <IndexLink to={this.props.to}>
+            ? <IndexLink className={activeClass} to={this.props.to}>
                     {this.props.children}
                 </IndexLink>
-            : <Link to={this.props.to}>
+            : <Link className={activeClass} to={this.props.to}>
                 {this.props.children}
             </Link>;
 
         return (
-            <li className={activeClass}>{navigationLink}</li>
+            navigationLink
         );
     }
 }

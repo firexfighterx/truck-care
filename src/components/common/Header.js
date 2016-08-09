@@ -4,10 +4,14 @@ import NavLink from './NavLink';
 
 const Header = () => {
     return (
-        <ul className="nav nav-pills">
-            <NavLink to="/" isIndex={true}>Home</NavLink>
-            <NavLink to="about">About Bitches</NavLink>
-        </ul>
+        <div className="left-nav-contents">
+          <div className="col-lg-3 col-md-3 col-sm-4">
+            <div className="list-group table-of-contents">
+              <NavLink to="/" isIndex={true}>Home</NavLink>
+              <NavLink to="about" isIndex={false}>About</NavLink>
+            </div>
+          </div>
+        </div>
     );
 };
 
