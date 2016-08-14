@@ -1,5 +1,3 @@
-import delay from './delay';
-
 // This file mocks a web API by working with the hard-coded data below.
 // It uses setTimeout to simulate the delay of an AJAX call.
 // All calls return promises.
@@ -29,16 +27,13 @@ const generateId = (author) => {
 class AuthorApi {
   static getAllAuthors() {
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
         resolve(Object.assign([], authors));
-      }, delay);
     });
   }
 
   static saveAuthor(author) {
     author = Object.assign({}, author); // to avoid manipulating object passed in.
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
         // Simulate server-side validation
         const minAuthorNameLength = 3;
         if (author.firstName.length < minAuthorNameLength) {
@@ -61,19 +56,16 @@ class AuthorApi {
         }
 
         resolve(author);
-      }, delay);
     });
   }
 
   static deleteAuthor(authorId) {
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
         const indexOfAuthorToDelete = authors.findIndex(author => {
           author.authorId == authorId;
         });
         authors.splice(indexOfAuthorToDelete, 1);
         resolve();
-      }, delay);
     });
   }
 }
