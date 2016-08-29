@@ -6,4 +6,4 @@ class ApiHelper {
     }
 }
 
-export default new ApiHelper();
+export default ApiHelper;

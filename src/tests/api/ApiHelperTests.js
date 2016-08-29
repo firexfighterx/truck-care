@@ -16,9 +16,10 @@ describe('ApiHelper', () => {
     // describe('performAjax', () => {
     //     it('calls jQuery\'s ajax function with provided object', () => {
     //         const AJAX_REQUEST = {};
+    //         let testObject = new ApiHelper();
     //         let ajax = sandbox.stub('jQuery', ajax);
     //
-    //         ApiHelper.performAjax(AJAX_REQUEST);
+    //         testObject.performAjax(AJAX_REQUEST);
     //
     //         assert(ajax.withArgs(AJAX_REQUEST).calledOnce, 'called ajax with provided request');
     //     });
