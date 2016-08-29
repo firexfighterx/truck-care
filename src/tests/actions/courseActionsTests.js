@@ -1,6 +1,6 @@
 import expect from 'expect';
-import * as courseActions from '../actions/courseActions';
-import * as types from '../actions/actionTypes';
+import * as courseActions from '../../actions/courseActions';
+import * as types from '../../actions/actionTypes';
 
 import thunk from 'redux-thunk';
 import nock from 'nock';
