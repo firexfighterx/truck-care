@@ -30,7 +30,7 @@ Home.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    trucks: state.truckCare
+    trucks: state.trucks
   };
 }
 

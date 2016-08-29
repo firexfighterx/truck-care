@@ -7,7 +7,7 @@
     "open:src": "babel-node tools/srcServer.js",
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
     "lint:watch": "npm run lint -- --watch",
-    "test": "mocha tools/testSetup.js src/**/*.test.js src/tests/**/*.test.js src/tests/**/*Tests.js",
+    "test": "mocha tools/testSetup.js src/tests/**/*.test.js src/tests/**/*Tests.js",
     "test:watch": "npm run test -- --watch",
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "node_modules/.bin/rimraf ./dist",
@@ -32,6 +32,7 @@
     "toastr": "^2.1.2"
   },
   "devDependencies": {
+    "assert": "^1.4.1",
     "babel-cli": "^6.8.0",
     "babel-core": "^6.8.0",
     "babel-loader": "^6.2.4",

@@ -3,14 +3,14 @@ import {
 } from 'redux';
 import courses from './courseReducer';
 import authors from './authorReducer';
-import truckCare from './TruckCareReducer';
+import trucks from './TruckCareReducer';
 import ajaxCallsInProgress from './ajaxStatusReducer';
 
 const rootReducer = combineReducers({
     courses,
     authors,
     ajaxCallsInProgress,
-    truckCare
+    trucks
 });
 
 export default rootReducer;
