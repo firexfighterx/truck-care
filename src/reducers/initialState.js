@@ -1,5 +1,6 @@
 export default {
-  authors: [],
-  courses: [],
-  ajaxCallsInProgress: 0
+    authors: [],
+    courses: [],
+    trucks: [],
+    ajaxCallsInProgress: 0
 };

@@ -1,12 +1,43 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router';
-//<Link to="about" className="btn btn-primary btn-lg">Learn More</Link>
-class Home extends React.Component {
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as TruckCareActions from '../../actions/TruckCareActions';
+
+class Home extends Component {
+  constructor(props){
+    super(props);
+  }
+
     render() {
+          const {trucks} = this.props;
+          let displayableTrucks = trucks.map(truck => {
+            return <div key={truck.id}>{truck.truckNumber}</div>;
+          });
+
         return (
-            <div>Content on home tab</div>
+          <div>
+            {displayableTrucks}
+          </div>
         );
     }
 }
 
-export default Home;
+Home.propTypes = {
+  trucks: PropTypes.array.isRequired
+};
+
+
+function mapStateToProps(state, ownProps) {
+  return {
+    trucks: state.truckCare
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(TruckCareActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
