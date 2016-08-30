@@ -25,4 +25,26 @@ describe('ApiHelper', () => {
     //     });
     // });
 
+    describe('get', () => {
+        it('sends a get call with the provided request object', () => {
+            let url = 'the url';
+            let data = {};
+            let successCallback = () => {};
+            let failureCallback = () => {};
+            let expectedRequest = {
+                url: url,
+                type: 'GET',
+                data: data,
+                success: successCallback,
+                failure: failureCallback
+            };
+
+            let performAjax = sandbox.stub(ApiHelper, 'performAjax');
+
+            ApiHelper.get(url, data, successCallback, failureCallback);
+
+            assert(performAjax.withArgs(expectedRequest).calledOnce, 'called perform AJAX with request object');
+        });
+    });
+
 });

@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import TruckCareApi from '../api/TruckCareApi';
+import TruckCareApi from '../api/truckCare/TruckCareApi';
 import {
     beginAjaxCall,
     ajaxCallError
