@@ -1,5 +1,6 @@
 import sinon from 'sinon';
 import assert from 'assert';
+import $ from 'jquery';
 import ApiHelper from '../../api/ApiHelper';
 
 describe('ApiHelper', () => {
@@ -13,17 +14,17 @@ describe('ApiHelper', () => {
         sandbox.restore();
     });
 
-    // describe('performAjax', () => {
-    //     it('calls jQuery\'s ajax function with provided object', () => {
-    //         const AJAX_REQUEST = {};
-    //         let testObject = new ApiHelper();
-    //         let ajax = sandbox.stub('jQuery', ajax);
-    //
-    //         testObject.performAjax(AJAX_REQUEST);
-    //
-    //         assert(ajax.withArgs(AJAX_REQUEST).calledOnce, 'called ajax with provided request');
-    //     });
-    // });
+    describe('performAjax', () => {
+        it('calls jQuery\'s ajax function with provided object', () => {
+            const AJAX_REQUEST = {};
+            let testObject = new ApiHelper();
+            let ajax = sandbox.stub($, 'ajax');
+
+            ApiHelper.performAjax(AJAX_REQUEST);
+
+            assert(ajax.withArgs(AJAX_REQUEST).calledOnce, 'called ajax with provided request');
+        });
+    });
 
     describe('get', () => {
         it('sends a get call with the provided request object', () => {
