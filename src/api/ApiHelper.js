@@ -14,8 +14,6 @@ class ApiHelper {
             failure: failureCallback
         });
     }
-
-    static promisify(functionCallback) {}
 }
 
 export default ApiHelper;

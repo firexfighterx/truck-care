@@ -16,20 +16,19 @@ describe('TruckCareApi', () => {
 
     describe('getAllTrucks', () => {
         it('gets all available trucks', () => {
-            let promisify = sandbox.stub(ApiHelper, 'promisify');
+
             let API_GET_OBJECT = {};
-            let SUCCESS_CALLBACK = {};
-            let FAILURE_CALLBACK = {};
-            let url = 'localhost:3000/api/trucks/all';
+            let BOUND_SUCCESS = {};
+            let BOUND_FAILURE = {};
+            let url = 'http://localhost:3000/api/trucks/all';
             let formData = {};
 
-            let handleGetTrucksSuccess = sandbox.stub(TruckCareApiHandlers, 'handleGetTrucksSuccess').returns(SUCCESS_CALLBACK);
-            let handleGetTrucksFailure = sandbox.stub(TruckCareApiHandlers, 'handleGetTrucksFailure').returns(FAILURE_CALLBACK);
-            let apiHelperGet = sandbox.stub(ApiHelper, 'get').returns(API_GET_OBJECT);
+            let bindHandleGetTrucksSuccess = sandbox.stub(TruckCareApiHandlers.handleGetTrucksSuccess, 'bind').returns(BOUND_SUCCESS);
+            let bindHandleGetTrucksFailure = sandbox.stub(TruckCareApiHandlers.handleGetTrucksFailure, 'bind').returns(BOUND_FAILURE);
+            let apiHelperGet = sandbox.stub(TruckCareApi, 'get').returns(API_GET_OBJECT);
 
             let result = TruckCareApi.getAllTrucks();
-            assert(apiHelperGet.withArgs(url, formData, handleGetTrucksSuccess, handleGetTrucksFailure).calledOnce, 'called api helper\'s get method');
-            assert(promisify.withArgs(API_GET_OBJECT).calledOnce, 'called promisify with api helper get');
+            assert(apiHelperGet.withArgs(url, formData, BOUND_SUCCESS, BOUND_FAILURE).calledOnce, 'called api helper\'s get method');
         });
     });
 
