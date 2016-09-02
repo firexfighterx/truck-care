@@ -7,7 +7,7 @@ class TruckCareApi extends ApiHelper {
     static getAllTrucks() {
         let url = `http://${EnvironmentUrls.baseUrl}/api/trucks/all`;
 
-        return new Promise((resolve, reject) => this.get(url, {}, TruckCareApiHandlers.handleGetTrucksSuccess.bind(TruckCareApiHandlers, resolve), TruckCareApiHandlers.handleGetTrucksFailure.bind(TruckCareApiHandlers, reject)));
+        return this.get(url, {});
     }
 }
 
