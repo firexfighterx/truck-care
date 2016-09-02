@@ -1,4 +1,4 @@
-class TruckCareApiHandlers {
+class TruckCareHandlers {
     static handleGetTrucksSuccess(resolve, trucks) {
         resolve(Object.assign([], trucks));
     }
@@ -7,4 +7,4 @@ class TruckCareApiHandlers {
     }
 }
 
-export default TruckCareApiHandlers;
+export default TruckCareHandlers;
