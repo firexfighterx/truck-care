@@ -30,19 +30,15 @@ describe('ApiHelper', () => {
         it('sends a get call with the provided request object', () => {
             let url = 'the url';
             let data = {};
-            let successCallback = () => {};
-            let failureCallback = () => {};
             let expectedRequest = {
                 url: url,
                 type: 'GET',
-                data: data,
-                success: successCallback,
-                failure: failureCallback
+                data: data
             };
 
             let performAjax = sandbox.stub(ApiHelper, 'performAjax');
 
-            ApiHelper.get(url, data, successCallback, failureCallback);
+            ApiHelper.get(url, data);
 
             assert(performAjax.withArgs(expectedRequest).calledOnce, 'called perform AJAX with request object');
         });

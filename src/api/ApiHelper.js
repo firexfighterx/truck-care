@@ -5,13 +5,11 @@ class ApiHelper {
         $.ajax(request);
     }
 
-    static get(url, data, successCallback, failureCallback) {
+    static get(url, data) {
         this.performAjax({
             url: url,
             type: 'GET',
-            data: data,
-            success: successCallback,
-            failure: failureCallback
+            data: data
         });
     }
 }
