@@ -33,12 +33,11 @@ describe('TruckCareActions', () => {
         });
     });
 
-    const middleware = [thunk];
-    const mockStore = configureMockStore(middleware);
+    describe('loadTrucks', () => {
+        const middleware = [thunk];
+        const mockStore = configureMockStore(middleware);
 
-    describe('Async Actions', () => {
-
-        it('should create BEGIN_AJAX_CALL and LOAD_COURSES_SUCCESS when loading courses', (done) => {
+        it('dispatches BEGIN_AJAX_CALL and GET_ALL_TRUCKS_SUCCESS when loading trucks', (done) => {
 
             const expectedActions = [{
                 type: types.BEGIN_AJAX_CALL
