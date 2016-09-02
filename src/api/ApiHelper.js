@@ -1,12 +1,13 @@
 import $ from 'jquery';
+import q from 'q';
 
 class ApiHelper {
     static performAjax(request) {
-        $.ajax(request);
+        return q.when($.ajax(request));
     }
 
     static get(url, data) {
-        this.performAjax({
+        return this.performAjax({
             url: url,
             type: 'GET',
             data: data
