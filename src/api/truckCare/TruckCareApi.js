@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import ApiHelper from '../ApiHelper';
 import EnvironmentUrls from '../EnvironmentUrls';
-import TruckCareApiHandlers from './TruckCareApiHandlers';
+import TruckCareApiHandlers from './TruckCareHandlers';
 
 class TruckCareApi extends ApiHelper {
     static getAllTrucks() {

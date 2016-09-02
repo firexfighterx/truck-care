@@ -1,6 +1,6 @@
 import sinon from 'sinon';
 import assert from 'assert';
-import TruckCareApiHandlers from '../../../api/truckCare/TruckCareApiHandlers';
+import TruckCareApiHandlers from '../../../api/truckCare/TruckCareHandlers';
 
 describe('TruckCareApiHandlers', () => {
     let sandbox;
