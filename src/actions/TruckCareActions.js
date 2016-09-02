@@ -12,13 +12,20 @@ export function loadTrucksSuccess(trucks) {
     };
 }
 
+export function loadTrucksFailure(error) {
+    return {
+        type: types.GET_ALL_TRUCKS_FAILURE,
+        error
+    };
+}
+
 export function loadTrucks() {
     return (dispatch) => {
         dispatch(beginAjaxCall());
         return TruckCareApi.getAllTrucks().then(trucks => {
             dispatch(loadTrucksSuccess(trucks));
         }).catch(error => {
-            throw (error);
+            dispatch(loadTrucksFailure(error));
         });
     };
 }
