@@ -3,7 +3,6 @@ import * as courseActions from '../../actions/courseActions';
 import * as types from '../../actions/actionTypes';
 
 import thunk from 'redux-thunk';
-import nock from 'nock';
 import configureMockStore from 'redux-mock-store';
 
 // Test a sync action
@@ -33,15 +32,8 @@ const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
 
 describe('Async Actions', () => {
-    afterEach(() => {
-        nock.cleanAll();
-    });
 
     it('should create BEGIN_AJAX_CALL and LOAD_COURSES_SUCCESS when loading courses', (done) => {
-        // Here's an example call to nock.
-        // nock('http://example.com/')
-        //   .get('/courses')
-        //   .reply(200, { body: { course: [{ id: 1, firstName: 'Cory', lastName: 'House'}] }});
 
         const expectedActions = [{
             type: types.BEGIN_AJAX_CALL
