@@ -1,7 +1,7 @@
 import sinon from 'sinon';
 import assert from 'assert';
 import * as TruckCareActions from '../../actions/TruckCareActions';
-import TruckCareApi from '../../api/truckCare/TruckCareApi';
+import TruckCareApi from '../../api/TruckCareApi';
 import * as types from '../../actions/actionTypes';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
