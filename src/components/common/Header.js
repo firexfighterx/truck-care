@@ -9,7 +9,6 @@ const Header = () => {
             <div className="list-group table-of-contents">
               <NavLink to="/" isIndex={true}>Home</NavLink>
               <NavLink to="about" isIndex={false}>About</NavLink>
-              <NavLink to="courses" isIndex={false}>Course</NavLink>
             </div>
           </div>
         </div>

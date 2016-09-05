@@ -1,7 +1,10 @@
-import expect from 'expect';
+import assert from 'assert';
 import NavLink from '../../../components/common/NavLink';
 import * as ShallowTestUtils from 'react-shallow-testutils';
-import { Link, IndexLink } from 'react-router';
+import {
+    Link,
+    IndexLink
+} from 'react-router';
 
 describe('NavLink', () => {
     it('renders a nav link', () => {
@@ -25,12 +28,11 @@ describe('NavLink', () => {
         let result = testObject.render();
         let linkItems = ShallowTestUtils.findAllWithType(result, Link);
 
-        expect(result.type).toEqual(Link);
-        expect(linkItems.length).toEqual(1);
-        expect(linkItems[0].props.children).toEqual(LINK_TEXT);
-        expect(linkItems[0].props.to).toEqual(TO);
+        assert.strictEqual(result.type, Link, 'Link is type returned');
+        assert.strictEqual(linkItems.length, 1, 'One link item returned');
+        assert.strictEqual(linkItems[0].props.children, LINK_TEXT, 'text was set for the returned link');
+        assert.strictEqual(linkItems[0].props.to, TO, 'to field was set');
     });
-
 
     it('renders a nav link with correct class when active', () => {
         const TO = "blah";
@@ -52,7 +54,7 @@ describe('NavLink', () => {
 
         let result = testObject.render();
 
-        expect(result.props.className).toEqual("list-group-item active");
+        assert.strictEqual(result.props.className, "list-group-item active", 'correct css class was set');
     });
 
 
@@ -76,9 +78,8 @@ describe('NavLink', () => {
 
         let result = testObject.render();
 
-        expect(result.props.className).toEqual("list-group-item");
+        assert.strictEqual(result.props.className, 'list-group-item', 'correct css classname was set');
     });
-
 
     it('renders an IndexLink when isIndex set to true', () => {
         const TO = "blah";
@@ -102,11 +103,9 @@ describe('NavLink', () => {
         let result = testObject.render();
         let indexLink = ShallowTestUtils.findAllWithType(result, IndexLink);
 
-        expect(result.type).toEqual(IndexLink);
-        expect(indexLink.length).toEqual(1);
-        expect(indexLink[0].props.children).toEqual(LINK_TEXT);
-        expect(indexLink[0].props.to).toEqual(TO);
+        assert.strictEqual(result.type, IndexLink, 'Index Link was the type returned');
+        assert.strictEqual(indexLink.length, 1, 'only one index link was rendered');
+        assert.strictEqual(indexLink[0].props.children, LINK_TEXT);
+        assert.strictEqual(indexLink[0].props.to, TO, 'to field was set');
     });
-
-
 });
