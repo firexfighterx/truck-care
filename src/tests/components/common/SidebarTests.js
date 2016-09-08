@@ -18,42 +18,6 @@ describe('SideBar', () => {
         sandbox.restore();
     });
 
-    describe('componentDidMount', () => {
-        it('redirects to Truck Detail for first truck in the list', () => {
-            let truck_one = {
-                id: 1,
-                truckNumber: '2400'
-            };
-            let truck_two = {
-                id: 2,
-                truckNumber: '2495'
-            };
-            let trucks = [truck_one, truck_two];
-            let push = sandbox.stub(browserHistory, 'push');
-            let testObject = new Sidebar({
-                trucks
-            });
-
-            testObject.componentDidMount();
-
-            assert(push.withArgs('/TruckDetail/2400').calledOnce, 'called browserHistory push one time');
-        });
-
-        it('does not redirect if the list is empty', () => {
-
-            let trucks = [];
-            let push = sandbox.stub(browserHistory, 'push');
-
-            let testObject = new Sidebar({
-                trucks
-            });
-
-            testObject.componentDidMount();
-
-            assert(push.notCalled, 'did not call to browserHistory push');
-        });
-    });
-
     describe('render', () => {
         it('renders nav links when there are trucks', () => {
             let truck_one = {
@@ -65,11 +29,10 @@ describe('SideBar', () => {
                 truckNumber: '2495'
             };
             let trucks = [truck_one, truck_two];
-            let testObject = new Sidebar({
+            let result = new Sidebar({
                 trucks
             });
 
-            let result = testObject.render();
             let navLinks = ShallowTestUtils.findAllWithType(result, NavLink);
 
             assert.strictEqual(navLinks.length, 2, 'two nav links were rendered');
@@ -85,11 +48,10 @@ describe('SideBar', () => {
 
         it('does not render any links when no trucks available', () => {
             let trucks = [];
-            let testObject = new Sidebar({
+            let result = new Sidebar({
                 trucks
             });
 
-            let result = testObject.render();
             let navLinks = ShallowTestUtils.findAllWithType(result, NavLink);
 
             assert.strictEqual(navLinks.length, 0, 'no nav links were rendered');

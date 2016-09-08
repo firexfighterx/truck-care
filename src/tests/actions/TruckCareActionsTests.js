@@ -4,6 +4,9 @@ import * as TruckCareActions from '../../actions/TruckCareActions';
 import TruckCareApi from '../../api/TruckCareApi';
 import * as types from '../../actions/actionTypes';
 import thunk from 'redux-thunk';
+import {
+    browserHistory
+} from 'react-router';
 import configureMockStore from 'redux-mock-store';
 
 describe('TruckCareActions', () => {
@@ -55,20 +58,44 @@ describe('TruckCareActions', () => {
                 type: types.BEGIN_AJAX_CALL
             }, {
                 type: types.GET_ALL_TRUCKS_SUCCESS,
-                trucks: [{
-                    id: 3456,
-                    title: '2400'
-                }]
+                trucks: []
             }];
 
             const store = mockStore({
                 trucks: []
             }, expectedActions, done);
-            let loadTrucks = sandbox.stub(TruckCareApi, 'getAllTrucks').returns(Promise.resolve());
+            let loadTrucks = sandbox.stub(TruckCareApi, 'getAllTrucks').returns(Promise.resolve([{
+                id: 3456,
+                truckNumber: '2400'
+            }]));
+            let push = sandbox.stub(browserHistory, 'push');
             store.dispatch(TruckCareActions.loadTrucks()).then(() => {
                 const actions = store.getActions();
                 assert.strictEqual(actions[0].type, types.BEGIN_AJAX_CALL);
                 assert.strictEqual(actions[1].type, types.GET_ALL_TRUCKS_SUCCESS);
+                assert(push.withArgs('/TruckDetail/2400').calledOnce, 'called browserHistory with first truck returned');
+                done();
+            });
+        });
+
+        it('dispatches GET_ALL_TRUCKS_SUCCESS and does not redirect when empty list of trucks', (done) => {
+            const expectedActions = [{
+                type: types.BEGIN_AJAX_CALL
+            }, {
+                type: types.GET_ALL_TRUCKS_SUCCESS,
+                trucks: []
+            }];
+
+            const store = mockStore({
+                trucks: []
+            }, expectedActions, done);
+            let loadTrucks = sandbox.stub(TruckCareApi, 'getAllTrucks').returns(Promise.resolve([]));
+            let push = sandbox.stub(browserHistory, 'push');
+            store.dispatch(TruckCareActions.loadTrucks()).then(() => {
+                const actions = store.getActions();
+                assert.strictEqual(actions[0].type, types.BEGIN_AJAX_CALL);
+                assert.strictEqual(actions[1].type, types.GET_ALL_TRUCKS_SUCCESS);
+                assert(push.notCalled, 'browserHistory\'s push not called');
                 done();
             });
         });

@@ -1,3 +1,9 @@
+import {
+    push
+} from 'react-router-redux';
+import {
+    browserHistory
+} from 'react-router';
 import * as types from './actionTypes';
 import TruckCareApi from '../api/TruckCareApi';
 import {
@@ -24,6 +30,10 @@ export function loadTrucks() {
         dispatch(beginAjaxCall());
         return TruckCareApi.getAllTrucks().then(trucks => {
             dispatch(loadTrucksSuccess(trucks));
+            if (trucks.length > 0) {
+                let url = `/TruckDetail/${trucks[0].truckNumber}`;
+                browserHistory.push(url);
+            }
         }).catch(error => {
             dispatch(loadTrucksFailure(error));
         });
