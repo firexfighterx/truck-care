@@ -1,12 +1,15 @@
-import React, {PropTypes} from 'react';
+import React, {Component,PropTypes} from 'react';
 import Sidebar from './common/Sidebar';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {browserHistory} from 'react-router';
 
-class App extends React.Component {
+export class App extends Component {
     render() {
         return (
             <div>
                 <div>
-                    <Sidebar/>
+                    <Sidebar trucks={this.props.trucks}/>
                 </div>
                 <div className="main-content-container">
                   {this.props.children}
@@ -17,7 +20,15 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-    children: PropTypes.object.isRequired
+    children: PropTypes.object.isRequired,
+    trucks: PropTypes.arrayOf(PropTypes.object)
 };
 
-export default App;
+
+function mapStateToProps(state, ownProps) {
+    return {
+        trucks: state.trucks
+    };
+}
+
+export default connect(mapStateToProps)(App);
