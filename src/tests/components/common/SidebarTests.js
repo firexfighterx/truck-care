@@ -3,6 +3,9 @@ import assert from 'assert';
 import {
     browserHistory
 } from 'react-router';
+import {
+    ListGroup
+} from 'react-bootstrap';
 import * as ShallowTestUtils from 'react-shallow-testutils';
 import NavLink from '../../../components/common/NavLink';
 import Sidebar from '../../../components/common/Sidebar';
@@ -34,7 +37,9 @@ describe('SideBar', () => {
             });
 
             let navLinks = ShallowTestUtils.findAllWithType(result, NavLink);
+            let listGroup = ShallowTestUtils.findAllWithType(result, ListGroup);
 
+            assert.strictEqual(listGroup.length, 1, 'one list group rendered');
             assert.strictEqual(navLinks.length, 2, 'two nav links were rendered');
             assert.strictEqual(navLinks[0].props.children, truck_one.truckNumber, 'text of the first nav link was set to truckNumber');
             assert.strictEqual(navLinks[0].key, `${truck_one.id}`, 'key of the first nav link was set to truckId');
