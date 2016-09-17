@@ -7,7 +7,7 @@ import {Provider} from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore} from 'react-router-redux';
 import routes from './routes';
-import {loadTrucks} from './actions/TruckCareActions';
+import {loadTrucks} from './actions/TruckListActions';
 import './css/site.css';
 import './css/cyborg.min.css';
 import '../node_modules/toastr/build/toastr.min.css';
