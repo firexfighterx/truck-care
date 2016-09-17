@@ -1,4 +1,5 @@
 export default {
-    trucks: [],
-    ajaxCallsInProgress: 0
+    trucks : [],
+    globalErrorNotification : {},
+    ajaxCallsInProgress : 0
 };
