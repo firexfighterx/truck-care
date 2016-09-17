@@ -1,6 +1,6 @@
 import sinon from 'sinon';
 import assert from 'assert';
-import * as actions from '../../actions/TruckCareActions';
+import * as actions from '../../actions/TruckListActions';
 import TruckCareReducer from '../../reducers/TruckListReducer';
 
 describe('TruckListReducer', () => {

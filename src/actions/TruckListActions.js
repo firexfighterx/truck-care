@@ -1,28 +1,15 @@
-import {
-    push
-} from 'react-router-redux';
-import {
-    browserHistory
-} from 'react-router';
+import {push} from 'react-router-redux';
+import {browserHistory} from 'react-router';
 import * as types from './actionTypes';
 import TruckCareApi from '../api/TruckCareApi';
-import {
-    beginAjaxCall,
-    ajaxCallError
-} from './ajaxStatusActions';
+import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
 
 export function loadTrucksSuccess(trucks) {
-    return {
-        type: types.GET_ALL_TRUCKS_SUCCESS,
-        trucks
-    };
+    return {type: types.GET_ALL_TRUCKS_SUCCESS, trucks};
 }
 
 export function loadTrucksFailure(error) {
-    return {
-        type: types.GET_ALL_TRUCKS_FAILURE,
-        error
-    };
+    return {type: types.GET_ALL_TRUCKS_FAILURE, error};
 }
 
 export function loadTrucks() {

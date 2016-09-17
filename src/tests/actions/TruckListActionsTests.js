@@ -1,12 +1,10 @@
 import sinon from 'sinon';
 import assert from 'assert';
-import * as TruckCareActions from '../../actions/TruckCareActions';
+import * as TruckCareActions from '../../actions/TruckListActions';
 import TruckCareApi from '../../api/TruckCareApi';
 import * as types from '../../actions/actionTypes';
 import thunk from 'redux-thunk';
-import {
-    browserHistory
-} from 'react-router';
+import {browserHistory} from 'react-router';
 import configureMockStore from 'redux-mock-store';
 
 describe('TruckCareActions', () => {
@@ -54,20 +52,24 @@ describe('TruckCareActions', () => {
         const mockStore = configureMockStore(middleware);
 
         it('dispatches BEGIN_AJAX_CALL and GET_ALL_TRUCKS_SUCCESS when loading trucks succeeds', (done) => {
-            const expectedActions = [{
-                type: types.BEGIN_AJAX_CALL
-            }, {
-                type: types.GET_ALL_TRUCKS_SUCCESS,
-                trucks: []
-            }];
+            const expectedActions = [
+                {
+                    type: types.BEGIN_AJAX_CALL
+                }, {
+                    type: types.GET_ALL_TRUCKS_SUCCESS,
+                    trucks: []
+                }
+            ];
 
             const store = mockStore({
                 trucks: []
             }, expectedActions, done);
-            let loadTrucks = sandbox.stub(TruckCareApi, 'getAllTrucks').returns(Promise.resolve([{
-                id: 3456,
-                truckNumber: '2400'
-            }]));
+            let loadTrucks = sandbox.stub(TruckCareApi, 'getAllTrucks').returns(Promise.resolve([
+                {
+                    id: 3456,
+                    truckNumber: '2400'
+                }
+            ]));
             let push = sandbox.stub(browserHistory, 'push');
             store.dispatch(TruckCareActions.loadTrucks()).then(() => {
                 const actions = store.getActions();
@@ -79,12 +81,14 @@ describe('TruckCareActions', () => {
         });
 
         it('dispatches GET_ALL_TRUCKS_SUCCESS and does not redirect when empty list of trucks', (done) => {
-            const expectedActions = [{
-                type: types.BEGIN_AJAX_CALL
-            }, {
-                type: types.GET_ALL_TRUCKS_SUCCESS,
-                trucks: []
-            }];
+            const expectedActions = [
+                {
+                    type: types.BEGIN_AJAX_CALL
+                }, {
+                    type: types.GET_ALL_TRUCKS_SUCCESS,
+                    trucks: []
+                }
+            ];
 
             const store = mockStore({
                 trucks: []
@@ -101,12 +105,14 @@ describe('TruckCareActions', () => {
         });
 
         it('dispatches BEGIN_AJAX_CALL and GET_ALL_TRUCKS_FAILURE when loading trucks fails', (done) => {
-            const expectedActions = [{
-                type: types.BEGIN_AJAX_CALL
-            }, {
-                type: types.GET_ALL_TRUCKS_FAILURE,
-                trucks: []
-            }];
+            const expectedActions = [
+                {
+                    type: types.BEGIN_AJAX_CALL
+                }, {
+                    type: types.GET_ALL_TRUCKS_FAILURE,
+                    trucks: []
+                }
+            ];
 
             const store = mockStore({
                 trucks: []
