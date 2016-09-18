@@ -1,6 +1,7 @@
 import sinon from 'sinon';
 import assert from 'assert';
 import * as TruckCareActions from '../../actions/TruckListActions';
+import * as GlobalErrorActions from '../../actions/GlobalErrorActions';
 import TruckCareApi from '../../api/TruckCareApi';
 import * as types from '../../actions/actionTypes';
 import thunk from 'redux-thunk';
@@ -111,6 +112,9 @@ describe('TruckCareActions', () => {
                 }, {
                     type: types.GET_ALL_TRUCKS_FAILURE,
                     trucks: []
+                }, {
+                    type: types.SET_GLOBAL_ERROR,
+                    globalErrorNotification: {}
                 }
             ];
 
@@ -122,6 +126,7 @@ describe('TruckCareActions', () => {
                 const actions = store.getActions();
                 assert.strictEqual(actions[0].type, types.BEGIN_AJAX_CALL);
                 assert.strictEqual(actions[1].type, types.GET_ALL_TRUCKS_FAILURE);
+                assert.strictEqual(actions[2].type, types.SET_GLOBAL_ERROR);
                 done();
             });
         });

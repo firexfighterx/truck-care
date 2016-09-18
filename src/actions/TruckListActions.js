@@ -3,6 +3,7 @@ import {browserHistory} from 'react-router';
 import * as types from './actionTypes';
 import TruckCareApi from '../api/TruckCareApi';
 import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
+import * as GlobalErrorActions from './GlobalErrorActions';
 
 export function loadTrucksSuccess(trucks) {
     return {type: types.GET_ALL_TRUCKS_SUCCESS, trucks};
@@ -23,6 +24,7 @@ export function loadTrucks() {
             }
         }).catch(error => {
             dispatch(loadTrucksFailure(error));
+            dispatch(GlobalErrorActions.setGlobalError({type: 'danger', message: 'Whoaaa there'}));
         });
     };
 }
