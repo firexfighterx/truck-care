@@ -9,10 +9,6 @@ export function loadTrucksSuccess(trucks) {
     return {type: types.GET_ALL_TRUCKS_SUCCESS, trucks};
 }
 
-export function loadTrucksFailure(error) {
-    return {type: types.GET_ALL_TRUCKS_FAILURE, error};
-}
-
 export function loadTrucks() {
     return (dispatch) => {
         dispatch(beginAjaxCall());
@@ -23,7 +19,6 @@ export function loadTrucks() {
                 browserHistory.push(url);
             }
         }).catch(error => {
-            dispatch(loadTrucksFailure(error));
             dispatch(GlobalErrorActions.setGlobalError({type: 'danger', message: 'Whoaaa there'}));
         });
     };

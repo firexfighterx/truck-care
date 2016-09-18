@@ -35,19 +35,6 @@ describe('TruckCareActions', () => {
         });
     });
 
-    describe('loadTrucksFailure', () => {
-        it('returns GET_ALL_TRUCKS_FAILURE action to dispatch', () => {
-            let error = {};
-
-            let expectedType = 'GET_ALL_TRUCKS_FAILURE';
-
-            let actual = TruckCareActions.loadTrucksFailure(error);
-
-            assert.strictEqual(actual.type, expectedType, 'returned correct item to be dispatched');
-            assert.strictEqual(actual.error, error);
-        });
-    });
-
     describe('loadTrucks', () => {
         const middleware = [thunk];
         const mockStore = configureMockStore(middleware);
@@ -125,8 +112,7 @@ describe('TruckCareActions', () => {
             store.dispatch(TruckCareActions.loadTrucks()).then(() => {
                 const actions = store.getActions();
                 assert.strictEqual(actions[0].type, types.BEGIN_AJAX_CALL);
-                assert.strictEqual(actions[1].type, types.GET_ALL_TRUCKS_FAILURE);
-                assert.strictEqual(actions[2].type, types.SET_GLOBAL_ERROR);
+                assert.strictEqual(actions[1].type, types.SET_GLOBAL_ERROR);
                 done();
             });
         });
