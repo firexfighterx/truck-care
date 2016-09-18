@@ -2,6 +2,7 @@ import sinon from 'sinon';
 import assert from 'assert';
 import * as TruckCareActions from '../../actions/TruckListActions';
 import * as GlobalErrorActions from '../../actions/GlobalErrorActions';
+import MessageFactory from '../../factories/MessageFactory';
 import TruckCareApi from '../../api/TruckCareApi';
 import * as types from '../../actions/actionTypes';
 import thunk from 'redux-thunk';
@@ -97,9 +98,6 @@ describe('TruckCareActions', () => {
                 {
                     type: types.BEGIN_AJAX_CALL
                 }, {
-                    type: types.GET_ALL_TRUCKS_FAILURE,
-                    trucks: []
-                }, {
                     type: types.SET_GLOBAL_ERROR,
                     globalErrorNotification: {}
                 }
@@ -108,11 +106,14 @@ describe('TruckCareActions', () => {
             const store = mockStore({
                 trucks: []
             }, expectedActions, done);
+            let failureMessage = {};
+            let createGetTrucksFailure = sandbox.stub(MessageFactory, 'createGetTrucksFailure').returns(failureMessage);
             let loadTrucks = sandbox.stub(TruckCareApi, 'getAllTrucks').returns(Promise.reject());
             store.dispatch(TruckCareActions.loadTrucks()).then(() => {
                 const actions = store.getActions();
                 assert.strictEqual(actions[0].type, types.BEGIN_AJAX_CALL);
                 assert.strictEqual(actions[1].type, types.SET_GLOBAL_ERROR);
+                assert(createGetTrucksFailure.calledOnce, 'called createGetTrucksFailure to get message to display');
                 done();
             });
         });
