@@ -13,40 +13,52 @@ constructor(props){
   super(props);
 }
 
-_handleCloseGlobalNotification(){}
+_handleCloseGlobalNotification(){
+  this.props.actions.setGlobalError({});
+}
 
-    render() {
-        return (
+_isGlobalErrorPresent(){
+  return this.props.globalErrorNotification.hasOwnProperty('type') && this.props.globalErrorNotification.hasOwnProperty('message');
+}
+
+render() {
+  let globalNotification = this._isGlobalErrorPresent()
+    ? <GlobalNotification onDismiss={this._handleCloseGlobalNotification.bind(this)} notification={this.props.globalErrorNotification} />
+    : null;
+
+    return (
+        <div>
             <div>
-                <div>
-                    <Sidebar trucks={this.props.trucks}/>
-                </div>
-                <div className="main-content-container">
-                  <GlobalNotification onDismiss={this._handleCloseGlobalNotification.bind(this)} notification={this.props.globalNotification} />
-                  {this.props.children}
-                </div>
+                <Sidebar trucks={this.props.trucks}/>
             </div>
-        );
-    }
+            <div className="main-content-container">
+              {globalNotification}
+              {this.props.children}
+            </div>
+        </div>
+    );
+  }
 }
 
 App.propTypes = {
     children: PropTypes.object.isRequired,
     trucks: PropTypes.arrayOf(PropTypes.object),
-    globalNotification: PropTypes.object.isRequired
+    globalErrorNotification: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired
 };
 
 
 function mapStateToProps(state, ownProps) {
     return {
-        trucks: state.trucks
+        trucks: state.trucks,
+        globalErrorNotification: state.globalErrorNotification
     };
 }
 
 function mapDispatchToProps(dispatch){
   return{
-    actions: bindActionCreators()
+    actions: bindActionCreators(GlobalErrorActions, dispatch)
   };
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
