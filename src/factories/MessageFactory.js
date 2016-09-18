@@ -1,6 +1,6 @@
 class MessageFactory {
     createGetTrucksFailure() {
-        return {type: 'danger', message: 'Error: Failed to retreive Truck List Items'};
+        return {type: 'danger', message: 'Failed to retreive Truck List'};
     }
 }
 

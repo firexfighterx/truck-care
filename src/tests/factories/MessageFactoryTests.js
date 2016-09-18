@@ -6,7 +6,7 @@ describe('MessageFactory', () => {
         it('returns a message to show when fails to get truck list', () => {
             let expected = {
                 type: 'danger',
-                message: 'Error: Failed to retreive Truck List Items'
+                message: 'Failed to retreive Truck List'
             };
 
             let actual = MessageFactory.createGetTrucksFailure();
