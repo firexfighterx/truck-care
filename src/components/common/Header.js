@@ -3,7 +3,7 @@ import {Link, IndexLink, browserHistory} from 'react-router';
 import {ListGroup} from 'react-bootstrap';
 import NavLink from './NavLink';
 
-const Sidebar = ({trucks}) => {
+const Header = ({trucks}) => {
     let links = trucks.map(truck => {
       let url = `/TruckDetail/${truck.truckNumber}`;
       return <NavLink key={truck.id} to={url} isIndex={false}>{truck.truckNumber}</NavLink>;
@@ -19,8 +19,8 @@ const Sidebar = ({trucks}) => {
       );
 };
 
-Sidebar.propTypes = {
+Header.propTypes = {
     trucks: PropTypes.arrayOf(PropTypes.object)
 };
 
-export default Sidebar;
+export default Header;

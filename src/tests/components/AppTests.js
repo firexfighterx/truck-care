@@ -1,7 +1,7 @@
 import sinon from 'sinon';
 import assert from 'assert';
 import React from 'react';
-import Sidebar from '../../components/common/Sidebar';
+import Sidebar from '../../components/common/Header';
 import GlobalNotification from '../../components/common/GlobalNotification';
 import * as ShallowTestUtils from 'react-shallow-testutils';
 import {App} from '../../components/App';

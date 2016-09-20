@@ -1,16 +1,12 @@
 import sinon from 'sinon';
 import assert from 'assert';
-import {
-    browserHistory
-} from 'react-router';
-import {
-    ListGroup
-} from 'react-bootstrap';
+import {browserHistory} from 'react-router';
+import {ListGroup} from 'react-bootstrap';
 import * as ShallowTestUtils from 'react-shallow-testutils';
 import NavLink from '../../../components/common/NavLink';
-import Sidebar from '../../../components/common/Sidebar';
+import Header from '../../../components/common/Header';
 
-describe('SideBar', () => {
+describe('Header', () => {
     let sandbox;
 
     beforeEach(() => {
@@ -32,9 +28,7 @@ describe('SideBar', () => {
                 truckNumber: '2495'
             };
             let trucks = [truck_one, truck_two];
-            let result = new Sidebar({
-                trucks
-            });
+            let result = new Header({trucks});
 
             let navLinks = ShallowTestUtils.findAllWithType(result, NavLink);
             let listGroup = ShallowTestUtils.findAllWithType(result, ListGroup);
@@ -53,9 +47,7 @@ describe('SideBar', () => {
 
         it('does not render any links when no trucks available', () => {
             let trucks = [];
-            let result = new Sidebar({
-                trucks
-            });
+            let result = new Header({trucks});
 
             let navLinks = ShallowTestUtils.findAllWithType(result, NavLink);
 

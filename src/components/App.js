@@ -1,6 +1,6 @@
 /*eslint-disable react/jsx-no-bind */
 import React, {Component,PropTypes} from 'react';
-import Sidebar from './common/Sidebar';
+import Header from './common/Header';
 import GlobalNotification from './common/GlobalNotification';
 import * as GlobalErrorActions from '../actions/GlobalErrorActions';
 import {connect} from 'react-redux';
@@ -28,11 +28,9 @@ render() {
 
     return (
         <div>
-            <div>
-                <Sidebar trucks={this.props.trucks}/>
-            </div>
             <div className="main-content-container">
               {globalNotification}
+              <Header trucks={this.props.trucks}/>
               {this.props.children}
             </div>
         </div>
