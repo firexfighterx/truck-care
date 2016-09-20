@@ -1,6 +1,7 @@
 import sinon from 'sinon';
 import assert from 'assert';
 import React from 'react';
+import {browserHistory} from 'react-router';
 import Sidebar from '../../components/common/Header';
 import GlobalNotification from '../../components/common/GlobalNotification';
 import * as ShallowTestUtils from 'react-shallow-testutils';
@@ -64,6 +65,19 @@ describe('App', () => {
       });
     });
 
+    describe('_handleMenuItemClick', () => {
+      it('calls browserHistory to change the url on click', () => {
+        let eventKey = '2400';
+        let expected = '/TruckDetail/2400';
+
+        let testObject = new App({});
+        let push = sandbox.stub(browserHistory, 'push');
+        testObject._handleMenuItemClick(eventKey);
+
+        assert(push.withArgs(expected).calledOnce, 'called browserHistory with eventKey in the url');
+      });
+    });
+
     describe('render', () => {
         it('renders a sidebar and children', () => {
             let children = <ul></ul>;
@@ -72,12 +86,15 @@ describe('App', () => {
                 children,
                 trucks
             };
+            let bound_handle = {};
             let testObject = new App(props);
             let isGlobalErrorPresent = sandbox.stub(testObject, '_isGlobalErrorPresent');
+            let boundHandleMenuItem = sandbox.stub(testObject._handleMenuItemClick, 'bind').returns(bound_handle);
             let result = testObject.render();
             let components = ShallowTestUtils.findAllWithType(result, Sidebar);
             assert.strictEqual(components.length, 1, 'one sidebar element was rendered');
             assert.strictEqual(components[0].props.trucks, trucks, 'trucks prop was passed to sidebar');
+            assert.strictEqual(components[0].props.dropDownClick, bound_handle, 'bound function was set to dropDownClick prop');
         });
 
         it('renders a GlobalNotification when an error is present', () => {

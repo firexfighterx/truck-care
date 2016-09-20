@@ -3,6 +3,7 @@ import React, {Component,PropTypes} from 'react';
 import Header from './common/Header';
 import GlobalNotification from './common/GlobalNotification';
 import * as GlobalErrorActions from '../actions/GlobalErrorActions';
+import {Grid} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {browserHistory} from 'react-router';
@@ -21,7 +22,9 @@ _isGlobalErrorPresent(){
   return this.props.globalErrorNotification.hasOwnProperty('type') && this.props.globalErrorNotification.hasOwnProperty('message');
 }
 
-_handleMenuItemClick(){}
+_handleMenuItemClick(eventKey){
+  browserHistory.push(`/TruckDetail/${eventKey}`);
+}
 
 render() {
   let globalNotification = this._isGlobalErrorPresent()
@@ -29,14 +32,12 @@ render() {
     : null;
 
     return (
-        <div>
-            <div>
-              <Header trucks={this.props.trucks}/>
+            <Grid>
+              <Header trucks={this.props.trucks} dropDownClick={this._handleMenuItemClick.bind(this)}/>
               {globalNotification}
               {this.props.children}
-            </div>
-        </div>
-    );
+            </Grid>
+          );
   }
 }
 
