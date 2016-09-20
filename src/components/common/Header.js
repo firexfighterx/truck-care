@@ -1,26 +1,37 @@
 import React, {PropTypes} from 'react';
-import {Link, IndexLink, browserHistory} from 'react-router';
-import {ListGroup} from 'react-bootstrap';
+import {ListGroup, Navbar, Nav, NavDropdown, MenuItem} from 'react-bootstrap';
 import NavLink from './NavLink';
 
-const Header = ({trucks}) => {
-    let links = trucks.map(truck => {
-      let url = `/TruckDetail/${truck.truckNumber}`;
-      return <NavLink key={truck.id} to={url} isIndex={false}>{truck.truckNumber}</NavLink>;
+const Header = ({trucks, dropDownClick}) => {
+    let dropDownItems = trucks.map(truck => {
+        return (
+            <MenuItem key={truck.id} eventKey={truck.truckNumber}>
+                {truck.truckNumber}
+            </MenuItem>
+        );
     });
-      return (
-          <div className="left-nav-contents">
-            <div className="col-lg-3">
-              <ListGroup>
-                {links}
-              </ListGroup>
-            </div>
-          </div>
-      );
+    return (
+        <Navbar inverse>
+            <Navbar.Header>
+                <Navbar.Brand>
+                    Truck Care
+                </Navbar.Brand>
+                <Navbar.Toggle/>
+            </Navbar.Header>
+            <Navbar.Collapse>
+                <Nav>
+                    <NavDropdown title="Trucks" onSelect={dropDownClick}>
+                        {dropDownItems}
+                    </NavDropdown>
+                </Nav>
+            </Navbar.Collapse>
+        </Navbar>
+    );
 };
 
 Header.propTypes = {
-    trucks: PropTypes.arrayOf(PropTypes.object)
+    trucks: PropTypes.arrayOf(PropTypes.object),
+    dropDownClick: PropTypes.func
 };
 
 export default Header;

@@ -21,6 +21,8 @@ _isGlobalErrorPresent(){
   return this.props.globalErrorNotification.hasOwnProperty('type') && this.props.globalErrorNotification.hasOwnProperty('message');
 }
 
+_handleMenuItemClick(){}
+
 render() {
   let globalNotification = this._isGlobalErrorPresent()
     ? <GlobalNotification onDismiss={this._handleCloseGlobalNotification.bind(this)} notification={this.props.globalErrorNotification} />
@@ -28,9 +30,9 @@ render() {
 
     return (
         <div>
-            <div className="main-content-container">
-              {globalNotification}
+            <div>
               <Header trucks={this.props.trucks}/>
+              {globalNotification}
               {this.props.children}
             </div>
         </div>
