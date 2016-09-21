@@ -1,6 +1,5 @@
 import React, {PropTypes} from 'react';
 import {ListGroup, Navbar, Nav, NavDropdown, MenuItem} from 'react-bootstrap';
-import NavLink from './NavLink';
 
 const Header = ({trucks, dropDownClick}) => {
     let dropDownItems = trucks.map(truck => {
@@ -10,22 +9,28 @@ const Header = ({trucks, dropDownClick}) => {
             </MenuItem>
         );
     });
+
+    let dropDown = trucks.length !== 0
+    ? <NavDropdown
+    title="Trucks"
+    onSelect={dropDownClick}>
+    {dropDownItems}
+    </NavDropdown> : null;
+    
     return (
-        <Navbar inverse>
-            <Navbar.Header>
-                <Navbar.Brand>
-                    Truck Care
-                </Navbar.Brand>
-                <Navbar.Toggle/>
-            </Navbar.Header>
-            <Navbar.Collapse>
-                <Nav>
-                    <NavDropdown title="Trucks" onSelect={dropDownClick}>
-                        {dropDownItems}
-                    </NavDropdown>
-                </Nav>
-            </Navbar.Collapse>
-        </Navbar>
+      <Navbar inverse>
+        <Navbar.Header>
+          <Navbar.Brand>
+            Truck Care
+          </Navbar.Brand>
+          <Navbar.Toggle/>
+        </Navbar.Header>
+        <Navbar.Collapse>
+          <Nav>
+            {dropDown}
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
 };
 

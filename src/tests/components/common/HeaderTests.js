@@ -69,9 +69,9 @@ describe('Header', () => {
             let trucks = [];
             let result = new Header({trucks});
 
-            let menuItems = ShallowTestUtils.findAllWithType(result, MenuItem);
+            let navDropDown = ShallowTestUtils.findAllWithType(result, NavDropdown);
 
-            assert.strictEqual(menuItems.length, 0, 'no Menu Items were rendered');
+            assert.strictEqual(navDropDown.length, 0, 'no nav drop down was rendered');
         });
     });
 });
