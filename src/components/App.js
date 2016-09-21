@@ -3,7 +3,7 @@ import React, {Component,PropTypes} from 'react';
 import Header from './common/Header';
 import GlobalNotification from './common/GlobalNotification';
 import * as GlobalErrorActions from '../actions/GlobalErrorActions';
-import {Grid} from 'react-bootstrap';
+import {Grid, Row, Col} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {browserHistory} from 'react-router';
@@ -32,12 +32,16 @@ render() {
     : null;
 
     return (
-            <Grid>
-              <Header trucks={this.props.trucks} dropDownClick={this._handleMenuItemClick.bind(this)}/>
-              {globalNotification}
-              {this.props.children}
-            </Grid>
-          );
+      <Grid>
+        <Row>
+          <Header
+            trucks={this.props.trucks}
+            dropDownClick={this._handleMenuItemClick.bind(this)}/>
+        </Row>
+        {globalNotification}
+        {this.props.children}
+      </Grid>
+    );
   }
 }
 

@@ -1,13 +1,21 @@
 import React, {PropTypes} from 'react';
-import {Alert} from 'react-bootstrap';
+import {Alert, Row, Col} from 'react-bootstrap';
 
 const GlobalNotification = ({notification, onDismiss}) => {
     return (
-        <div>
-            <Alert bsStyle={notification.type} onDismiss={onDismiss}>
-                <p>{notification.message}</p>
-            </Alert>
-        </div>
+      <Row>
+        <Col xs={6} md={4} />
+        <Col xs={6} md={4} >
+          <Alert
+            bsStyle={notification.type}
+            onDismiss={onDismiss}>
+            <p>
+              {notification.message}
+            </p>
+          </Alert>
+        </Col>
+        <Col xs={6} md={4} />
+      </Row>
     );
 };
 GlobalNotification.propTypes = {
