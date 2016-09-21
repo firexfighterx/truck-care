@@ -12,11 +12,12 @@ const Header = ({trucks, dropDownClick}) => {
 
     let dropDown = trucks.length !== 0
     ? <NavDropdown
+    id="nav-list-trucks"
     title="Trucks"
     onSelect={dropDownClick}>
     {dropDownItems}
     </NavDropdown> : null;
-    
+
     return (
       <Navbar inverse>
         <Navbar.Header>
