@@ -27,8 +27,8 @@ describe('GlobalNotification', () => {
             assert.strictEqual(results.length, 1, 'one Alert item was rendered');
             assert.strictEqual(results[0].props.bsStyle, notification.type, 'Alert Style is danger');
             assert.strictEqual(results[0].props.onDismiss, onDismiss);
-            let alertChildren = ShallowTestUtils.findAllWithType(results[0], 'p');
-            assert.strictEqual(alertChildren[0].props.children, notification.message, 'message was set inside of alert');
+            let alertChildren = ShallowTestUtils.findAllWithType(results[0], 'span');
+            assert.strictEqual(alertChildren[1].props.children, notification.message, 'message was set inside of alert');
 
         });
     });

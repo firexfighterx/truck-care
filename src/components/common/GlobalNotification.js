@@ -9,9 +9,11 @@ const GlobalNotification = ({notification, onDismiss}) => {
           <Alert
             bsStyle={notification.type}
             onDismiss={onDismiss}>
-            <p>
+            <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
+            </span>
+            <span className="global-alert">
               {notification.message}
-            </p>
+            </span>
           </Alert>
         </Col>
         <Col xs={6} md={4} />
