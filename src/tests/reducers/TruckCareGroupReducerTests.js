@@ -3,14 +3,13 @@ import * as actions from '../../actions/TruckCareGroupActions';
 import TruckCareGroupReducer from '../../reducers/TruckCareGroupReducer';
 
 describe('TruckListReducer', () => {
-
     describe('Default TruckListReducer', () => {
         it('returns a new state with trucks when intial state is empty', () => {
             let group = {
                 groupName: 'Foo',
                 members: []
             };
-            let action = actions.loadGroupSuccess(group);
+            let action = actions.loadTruckCareGroupSuccess(group);
 
             let actual = TruckCareGroupReducer({}, action);
 
@@ -28,7 +27,7 @@ describe('TruckListReducer', () => {
                 members: []
             };
 
-            let action = actions.loadGroupSuccess(truckCareGroup);
+            let action = actions.loadTruckCareGroupSuccess(truckCareGroup);
 
             let actual = TruckCareGroupReducer(intialState, action);
 

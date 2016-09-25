@@ -16,10 +16,10 @@ describe('MessageFactory', () => {
     });
 
     describe('createGetActiveGroupFailure', () => {
-        it('returns a message to show when fails to get active truck care group', () => {
+        it('returns a message to show when fails to get truck care group', () => {
             let expected = {
                 type: 'danger',
-                message: 'Failed to get Active Truck-Care Group'
+                message: 'Failed to get Truck-Care Group'
             };
 
             let actual = MessageFactory.createGetActiveGroupFailure();

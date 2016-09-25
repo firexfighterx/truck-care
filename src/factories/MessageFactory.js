@@ -8,7 +8,7 @@ class MessageFactory {
     }
 
     static createGetActiveGroupFailure() {
-        return createError('Failed to get Active Truck-Care Group');
+        return createError('Failed to get Truck-Care Group');
     }
 }
 

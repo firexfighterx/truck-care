@@ -47,7 +47,7 @@ describe('Store', function() {
             members: []
         };
 
-        let action = truckCareGroupActions.loadGroupSuccess(truckCareGroup);
+        let action = truckCareGroupActions.loadTruckCareGroupSuccess(truckCareGroup);
         store.dispatch(action);
 
         let actual = store.getState().truckCareGroup;
