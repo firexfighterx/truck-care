@@ -40,11 +40,9 @@ describe('TruckCareActions', () => {
         const middleware = [thunk];
         const mockStore = configureMockStore(middleware);
 
-        it('dispatches BEGIN_AJAX_CALL and GET_ALL_TRUCKS_SUCCESS when loading trucks succeeds', (done) => {
+        it('dispatches GET_ALL_TRUCKS_SUCCESS when loading trucks succeeds', (done) => {
             const expectedActions = [
                 {
-                    type: types.BEGIN_AJAX_CALL
-                }, {
                     type: types.GET_ALL_TRUCKS_SUCCESS,
                     trucks: []
                 }
@@ -62,8 +60,7 @@ describe('TruckCareActions', () => {
             let push = sandbox.stub(browserHistory, 'push');
             store.dispatch(TruckCareActions.loadTrucks()).then(() => {
                 const actions = store.getActions();
-                assert.strictEqual(actions[0].type, types.BEGIN_AJAX_CALL);
-                assert.strictEqual(actions[1].type, types.GET_ALL_TRUCKS_SUCCESS);
+                assert.strictEqual(actions[0].type, types.GET_ALL_TRUCKS_SUCCESS);
                 assert(push.withArgs('/TruckDetail/2400').calledOnce, 'called browserHistory with first truck returned');
                 done();
             });
@@ -72,8 +69,6 @@ describe('TruckCareActions', () => {
         it('dispatches GET_ALL_TRUCKS_SUCCESS and does not redirect when empty list of trucks', (done) => {
             const expectedActions = [
                 {
-                    type: types.BEGIN_AJAX_CALL
-                }, {
                     type: types.GET_ALL_TRUCKS_SUCCESS,
                     trucks: []
                 }
@@ -86,18 +81,15 @@ describe('TruckCareActions', () => {
             let push = sandbox.stub(browserHistory, 'push');
             store.dispatch(TruckCareActions.loadTrucks()).then(() => {
                 const actions = store.getActions();
-                assert.strictEqual(actions[0].type, types.BEGIN_AJAX_CALL);
-                assert.strictEqual(actions[1].type, types.GET_ALL_TRUCKS_SUCCESS);
+                assert.strictEqual(actions[0].type, types.GET_ALL_TRUCKS_SUCCESS);
                 assert(push.notCalled, 'browserHistory\'s push not called');
                 done();
             });
         });
 
-        it('dispatches BEGIN_AJAX_CALL and GET_ALL_TRUCKS_FAILURE when loading trucks fails', (done) => {
+        it('dispatches GET_ALL_TRUCKS_FAILURE when loading trucks fails', (done) => {
             const expectedActions = [
                 {
-                    type: types.BEGIN_AJAX_CALL
-                }, {
                     type: types.SET_GLOBAL_ERROR,
                     globalErrorNotification: {}
                 }
@@ -111,8 +103,7 @@ describe('TruckCareActions', () => {
             let loadTrucks = sandbox.stub(TruckCareApi, 'getAllTrucks').returns(Promise.reject());
             store.dispatch(TruckCareActions.loadTrucks()).then(() => {
                 const actions = store.getActions();
-                assert.strictEqual(actions[0].type, types.BEGIN_AJAX_CALL);
-                assert.strictEqual(actions[1].type, types.SET_GLOBAL_ERROR);
+                assert.strictEqual(actions[0].type, types.SET_GLOBAL_ERROR);
                 assert(createGetTrucksFailure.calledOnce, 'called createGetTrucksFailure to get message to display');
                 done();
             });

@@ -2,7 +2,6 @@ import {push} from 'react-router-redux';
 import {browserHistory} from 'react-router';
 import * as types from './actionTypes';
 import TruckCareApi from '../api/TruckCareApi';
-import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
 import * as GlobalErrorActions from './GlobalErrorActions';
 import MessageFactory from '../factories/MessageFactory';
 
@@ -12,7 +11,6 @@ export function loadTrucksSuccess(trucks) {
 
 export function loadTrucks() {
     return (dispatch) => {
-        dispatch(beginAjaxCall());
         return TruckCareApi.getAllTrucks().then(trucks => {
             dispatch(loadTrucksSuccess(trucks));
             if (trucks.length > 0) {
