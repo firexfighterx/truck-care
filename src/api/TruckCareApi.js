@@ -7,7 +7,9 @@ class TruckCareApi extends ApiHelper {
         return this.get(`http://${EnvironmentUrls.baseUrl}/api/trucks/all`, {});
     }
 
-    static getTruckCareGroup() {}
+    static getTruckCareGroup() {
+        return this.get(`http://${EnvironmentUrls.baseUrl}/api/group/active`, {});
+    }
 }
 
 export default TruckCareApi;

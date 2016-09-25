@@ -27,5 +27,16 @@ describe('TruckCareApi', () => {
         });
     });
 
+    describe('getTruckCareGroup', () => {
+        it('gets active Truck Care Group', () => {
+            let API_GET_OBJECT = {};
+            let url = 'http://localhost:3000/api/group/active';
+            let formData = {};
 
+            let apiHelperGet = sandbox.stub(TruckCareApi, 'get').returns(API_GET_OBJECT);
+
+            let result = TruckCareApi.getTruckCareGroup();
+            assert(apiHelperGet.withArgs(url, formData).calledOnce, 'called api helper\'s get method');
+        });
+    });
 });
