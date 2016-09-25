@@ -8,12 +8,14 @@ import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore} from 'react-router-redux';
 import routes from './routes';
 import {loadTrucks} from './actions/TruckListActions';
+import {loadTruckCareGroup} from './actions/TruckCareGroupActions';
 import './css/site.css';
 import './css/cyborg.min.css';
 import '../node_modules/toastr/build/toastr.min.css';
 
 const store = configureStore();
 store.dispatch(loadTrucks());
+store.dispatch(loadTruckCareGroup());
 const history = syncHistoryWithStore(browserHistory, store);
 render(
   <Provider store={store}>
