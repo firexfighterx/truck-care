@@ -14,4 +14,17 @@ describe('MessageFactory', () => {
             assert.deepEqual(actual, expected, 'returned expected message to display');
         });
     });
+
+    describe('createGetActiveGroupFailure', () => {
+        it('returns a message to show when fails to get active truck care group', () => {
+            let expected = {
+                type: 'danger',
+                message: 'Failed to get Active Truck-Care Group'
+            };
+
+            let actual = MessageFactory.createGetActiveGroupFailure();
+
+            assert.deepEqual(actual, expected, 'returned expected message to display');
+        });
+    });
 });

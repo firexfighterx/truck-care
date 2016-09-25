@@ -1,9 +1,15 @@
+let createError = (message) => {
+    return {type: 'danger', message};
+};
+
 class MessageFactory {
-    createGetTrucksFailure() {
-        return {type: 'danger', message: 'Failed to retreive Truck List'};
+    static createGetTrucksFailure() {
+        return createError('Failed to retreive Truck List');
     }
 
-    createGetActiveGroupFailure() {}
+    static createGetActiveGroupFailure() {
+        return createError('Failed to get Active Truck-Care Group');
+    }
 }
 
-export default new MessageFactory();
+export default MessageFactory;
