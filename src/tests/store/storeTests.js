@@ -3,6 +3,7 @@ import {createStore} from 'redux';
 import rootReducer from '../../reducers';
 import initialState from '../../reducers/initialState';
 import * as truckCareActions from '../../actions/TruckListActions';
+import * as truckCareGroupActions from '../../actions/TruckCareGroupActions';
 import * as globalErrorActions from '../../actions/GlobalErrorActions';
 
 describe('Store', function() {
@@ -36,5 +37,21 @@ describe('Store', function() {
         let actual = store.getState().globalErrorNotification;
 
         assert.deepEqual(actual, globalErrorNotification, 'global error notification was set on the store');
+    });
+
+    it('should update store with dispatched truck care group', () => {
+        let store = createStore(rootReducer, initialState);
+
+        let truckCareGroup = {
+            groupName: 'Foo',
+            members: []
+        };
+
+        let action = truckCareGroupActions.loadGroupSuccess(truckCareGroup);
+        store.dispatch(action);
+
+        let actual = store.getState().truckCareGroup;
+
+        assert.deepEqual(actual, truckCareGroup, 'truck care group was set on the store');
     });
 });
