@@ -1,5 +1,5 @@
-import * as types from '../actions/actionTypes';
-import initialState from './initialState';
+import * as types from '../actions/ActionTypes';
+import initialState from './InitialState';
 
 export default function TruckListReducer(state = initialState.trucks, action) {
     switch (action.type) {

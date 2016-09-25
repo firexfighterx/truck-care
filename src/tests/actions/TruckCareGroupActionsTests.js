@@ -5,7 +5,7 @@ import configureMockStore from 'redux-mock-store';
 import * as TruckCareGroupActions from '../../actions/TruckCareGroupActions';
 import MessageFactory from '../../factories/MessageFactory';
 import TruckCareApi from '../../api/TruckCareApi';
-import * as types from '../../actions/actionTypes';
+import * as types from '../../actions/ActionTypes';
 
 describe('TruckCareGroupActions', () => {
     let sandbox;

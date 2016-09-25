@@ -1,4 +1,4 @@
-import * as actionTypes from './actionTypes';
+import * as actionTypes from './ActionTypes';
 import TruckCareApi from '../api/TruckCareApi';
 import * as GlobalErrorActions from './GlobalErrorActions';
 import MessageFactory from '../factories/MessageFactory';
