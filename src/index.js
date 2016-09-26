@@ -10,7 +10,7 @@ import routes from './routes';
 import {loadTrucks} from './actions/TruckListActions';
 import {loadTruckCareGroup} from './actions/TruckCareGroupActions';
 import './css/site.css';
-import './css/cyborg.min.css';
+import './css/yeti.min.css';
 import '../node_modules/toastr/build/toastr.min.css';
 
 const store = configureStore();

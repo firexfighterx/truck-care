@@ -39,7 +39,7 @@ render() {
             dropDownClick={this._handleMenuItemClick.bind(this)}/>
         </Row>
         {globalNotification}
-        {this.props.children}
+        <Row>{this.props.children}</Row>
       </Grid>
     );
   }

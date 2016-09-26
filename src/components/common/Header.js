@@ -19,7 +19,7 @@ const Header = ({trucks, dropDownClick}) => {
     </NavDropdown> : null;
 
     return (
-      <Navbar inverse>
+      <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
             Truck Care

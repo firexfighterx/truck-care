@@ -26,7 +26,6 @@ describe('Header', () => {
             let toggle = ShallowTestUtils.findAllWithType(actual, Navbar.Toggle);
 
             assert.strictEqual(navbar.length, 1, 'one navbar was rendered');
-            assert.strictEqual(navbar[0].props.inverse, true, 'nav bar inverse set to true');
             assert.strictEqual(brand.length, 1, 'one brand was rendered');
             assert.strictEqual(brand[0].props.children, 'Truck Care', 'Truck Care text was rendered as header brand');
             assert.strictEqual(toggle.length, 1, 'one Header.Toggle was rendered');
