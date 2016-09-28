@@ -1,26 +1,28 @@
 import React, {PropTypes} from 'react';
-import {
-    Row,
-    Col,
-    Panel,
-    Button,
-    Label,
-    ButtonGroup
-} from 'react-bootstrap';
+import {Row,Col,Panel, DropdownButton, MenuItem} from 'react-bootstrap';
+
+import TruckCareGroupActiveMember from './TruckCareGroupActiveMember';
 const TruckCareGroup = ({truckCareGroup}) => {
+
+  let members = truckCareGroup.members.map(member => {
+    return <MenuItem key={member.id} eventKey={member.id}>{member.name}</MenuItem>;
+  });
+
+    let title = <h2>Truck Care Group: <strong>{truckCareGroup.groupName}</strong></h2>;
     return (
-        <Row>
-            <Col lg={8} md={8} mdOffset={2}>
-                <Panel header={< h2 > Title < /h2>} bsStyle="primary">
-                    <ButtonGroup>
-                        <Button bsStyle="primary" bsSize="xsmall">Foo Bar</Button>
-                        <Button bsStyle="primary" bsSize="xsmall">
-                            <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                        </Button>
-                    </ButtonGroup>
-                </Panel>
-            </Col>
-        </Row>
+      <Row>
+        <Col lg={8} md={8} mdOffset={2}>
+          <Panel header={title} bsStyle="primary" >
+            <DropdownButton
+              bsStyle="link"
+              noCaret
+              title="Add"
+              id="add-truck-care-user">
+              {members}
+            </DropdownButton>
+          </Panel>
+        </Col>
+      </Row>
     );
 };
 

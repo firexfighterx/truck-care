@@ -14,7 +14,7 @@ export class TruckDetail extends Component {
     render() {
         return (
           <Grid>
-            <TruckCareGroup />
+            <TruckCareGroup truckCareGroup={this.props.truckCareGroup} />
             <Row>
               <Panel>
                 {this.props.currentTruck}
@@ -26,14 +26,16 @@ export class TruckDetail extends Component {
 }
 
 TruckDetail.propTypes = {
-    currentTruck: PropTypes.string.isRequired
+    currentTruck: PropTypes.string.isRequired,
+    truckCareGroup: PropTypes.object
 };
 
 
 function mapStateToProps(state, ownProps) {
   let currentTruck = ownProps.params.id;
     return {
-      currentTruck
+      currentTruck,
+      truckCareGroup: state.truckCareGroup
     };
 }
 
