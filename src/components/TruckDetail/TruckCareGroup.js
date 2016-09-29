@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import {Row,Col,Panel, DropdownButton, MenuItem} from 'react-bootstrap';
+import {Row,Col,Panel, Label} from 'react-bootstrap';
 import TruckCareGroupActiveMember from './TruckCareGroupActiveMember';
 import TruckCareGroupAvailableMember from './TruckCareGroupAvailableMember';
 const TruckCareGroup = ({truckCareGroup}) => {
@@ -7,7 +7,9 @@ const TruckCareGroup = ({truckCareGroup}) => {
   let dropDown = (truckCareGroup.members || []).length > 0
   ? <TruckCareGroupAvailableMember members={truckCareGroup.members} /> : null;
 
-  let activeMembers = (truckCareGroup.activeMembers || []).map(member => <TruckCareGroupActiveMember key={member.id} member={member} />);
+  let activeMembers = (truckCareGroup.activeMembers || []).length > 0
+  ? truckCareGroup.activeMembers.map(member => <TruckCareGroupActiveMember key={member.id} member={member} />)
+  : <Label>No one actively performing Truck Care</Label>;
 
     let title = <h2>Truck Care Group: <strong>{truckCareGroup.groupName}</strong></h2>;
     return (

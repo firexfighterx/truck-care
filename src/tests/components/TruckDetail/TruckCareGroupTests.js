@@ -1,7 +1,7 @@
 import sinon from 'sinon';
 import assert from 'assert';
 import * as ShallowTestUtils from 'react-shallow-testutils';
-import {Panel} from 'react-bootstrap';
+import {Panel, Label} from 'react-bootstrap';
 import TruckCareGroup from '../../../components/TruckDetail/TruckCareGroup';
 import TruckCareGroupAvailableMember from '../../../components/TruckDetail/TruckCareGroupAvailableMember';
 import TruckCareGroupActiveMember from '../../../components/TruckDetail/TruckCareGroupActiveMember';
@@ -72,9 +72,11 @@ describe('TruckCareGroup', () => {
 
             let actual = TruckCareGroup({truckCareGroup});
 
-            let result = ShallowTestUtils.findAllWithType(actual, TruckCareGroupActiveMember);
+            let truckCareGroupActiveMember = ShallowTestUtils.findAllWithType(actual, TruckCareGroupActiveMember);
+            let label = ShallowTestUtils.findAllWithType(actual, Label);
 
-            assert.strictEqual(result.length, 0, 'no Active Member was rendered');
+            assert.strictEqual(truckCareGroupActiveMember.length, 0, 'no Active Member was rendered');
+            assert.strictEqual(label[0].props.children, 'No one actively performing Truck Care');
         });
     });
 });
