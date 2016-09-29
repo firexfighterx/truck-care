@@ -1,8 +1,9 @@
 import sinon from 'sinon';
 import assert from 'assert';
 import * as ShallowTestUtils from 'react-shallow-testutils';
-import {Panel, DropdownButton, MenuItem} from 'react-bootstrap';
+import {Panel} from 'react-bootstrap';
 import TruckCareGroup from '../../../components/TruckDetail/TruckCareGroup';
+import TruckCareGroupAvailableMember from '../../../components/TruckDetail/TruckCareGroupAvailableMember';
 
 describe('TruckCareGroup', () => {
     let sandbox;
@@ -31,27 +32,14 @@ describe('TruckCareGroup', () => {
             assert.strictEqual(result[0].props.bsStyle, 'primary');
         });
 
-        it('renders a Drop Down in the Panel with the available Truck Care Group Members', () => {
-            let members = [
-                {
-                    id: 1,
-                    name: 'Joe Schmoe'
-                }
-            ];
-            let truckCareGroup = {
-                members
-            };
+        it('does not render a drop down when members is null', () => {
+            let truckCareGroup = {};
 
-            let actual = new TruckCareGroup({truckCareGroup});
+            let actual = TruckCareGroup({truckCareGroup});
 
-            let result = ShallowTestUtils.findAllWithType(actual, DropdownButton);
-            let menuItem = ShallowTestUtils.findAllWithType(actual, MenuItem);
+            let result = ShallowTestUtils.findAllWithType(actual, TruckCareGroupAvailableMember);
 
-            assert.strictEqual(result.length, 1, 'one drop down rendered');
-            assert.strictEqual(result[0].props.title, 'Add');
-            assert.strictEqual(menuItem[0].props.children, 'Joe Schmoe', 'Joe Schmoe was set as text');
-            assert.strictEqual(menuItem[0].props.eventKey, 1, 'event key was set with id');
-
+            assert.strictEqual(result.length, 0, 'no TruckCareGroupAvailableMember component was rendered');
         });
     });
 });

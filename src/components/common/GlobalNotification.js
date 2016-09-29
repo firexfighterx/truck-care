@@ -22,7 +22,7 @@ const GlobalNotification = ({notification, onDismiss}) => {
 };
 GlobalNotification.propTypes = {
     notification: PropTypes.object.isRequired,
-    onDismiss: PropTypes.object.isRequired
+    onDismiss: PropTypes.func.isRequired
 };
 
 export default GlobalNotification;
