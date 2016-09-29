@@ -4,6 +4,7 @@ import * as ShallowTestUtils from 'react-shallow-testutils';
 import {Panel} from 'react-bootstrap';
 import TruckCareGroup from '../../../components/TruckDetail/TruckCareGroup';
 import TruckCareGroupAvailableMember from '../../../components/TruckDetail/TruckCareGroupAvailableMember';
+import TruckCareGroupActiveMember from '../../../components/TruckDetail/TruckCareGroupActiveMember';
 
 describe('TruckCareGroup', () => {
     let sandbox;
@@ -20,7 +21,8 @@ describe('TruckCareGroup', () => {
         it('renders a Panel with the active Truck Care Group as the Title', () => {
             let truckCareGroup = {
                 groupName: 'Group C',
-                members: []
+                members: [],
+                activeMembers: []
             };
 
             let actual = TruckCareGroup({truckCareGroup});
@@ -33,13 +35,46 @@ describe('TruckCareGroup', () => {
         });
 
         it('does not render a drop down when members is null', () => {
-            let truckCareGroup = {};
+            let truckCareGroup = {
+                activeMembers: []
+            };
 
             let actual = TruckCareGroup({truckCareGroup});
 
             let result = ShallowTestUtils.findAllWithType(actual, TruckCareGroupAvailableMember);
 
             assert.strictEqual(result.length, 0, 'no TruckCareGroupAvailableMember component was rendered');
+        });
+
+        it('renders an active truck care member when there are activeMembers', () => {
+            let activeMembers = [
+                {
+                    id: 1,
+                    name: 'Foo Bar'
+                }
+            ];
+            let truckCareGroup = {
+                activeMembers
+            };
+
+            let actual = TruckCareGroup({truckCareGroup});
+
+            let result = ShallowTestUtils.findAllWithType(actual, TruckCareGroupActiveMember);
+
+            assert.strictEqual(result.length, 1, 'one Active Member was rendered');
+        });
+
+        it('does not render active truck care member when no activeMembers', () => {
+            let activeMembers = [];
+            let truckCareGroup = {
+                activeMembers
+            };
+
+            let actual = TruckCareGroup({truckCareGroup});
+
+            let result = ShallowTestUtils.findAllWithType(actual, TruckCareGroupActiveMember);
+
+            assert.strictEqual(result.length, 0, 'no Active Member was rendered');
         });
     });
 });
