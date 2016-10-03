@@ -20,11 +20,11 @@ describe('TruckDetail', () => {
         it('calls action creator to update isActive status', () => {
             let eventKey = 2;
             let isActive = true;
-            let updateMemberIsActiveStatus = sandbox.spy();
+            let updateTruckCareGroupMemberToActive = sandbox.spy();
 
             let props = {
                 actions: {
-                    updateMemberIsActiveStatus
+                    updateTruckCareGroupMemberToActive
                 }
             };
 
@@ -32,7 +32,7 @@ describe('TruckDetail', () => {
 
             testObject._updateTruckCareGroupMemberToActive(eventKey);
 
-            assert(updateMemberIsActiveStatus.withArgs(eventKey, isActive).calledOnce, 'called props action method updateMemberIsActiveStatus');
+            assert(updateTruckCareGroupMemberToActive.withArgs(eventKey).calledOnce, 'called props action method updateTruckCareGroupMemberToActive');
         });
     });
 
@@ -40,11 +40,11 @@ describe('TruckDetail', () => {
         it('calls action creator to update isActive status', () => {
             let eventKey = 2;
             let isActive = false;
-            let updateMemberIsActiveStatus = sandbox.spy();
+            let updateTruckCareGroupMemberToInactive = sandbox.spy();
 
             let props = {
                 actions: {
-                    updateMemberIsActiveStatus
+                    updateTruckCareGroupMemberToInactive
                 }
             };
 
@@ -52,7 +52,7 @@ describe('TruckDetail', () => {
 
             testObject._updateTruckCareGroupMemberToInactive(eventKey);
 
-            assert(updateMemberIsActiveStatus.withArgs(eventKey, isActive).calledOnce, 'called props action method updateMemberIsActiveStatus');
+            assert(updateTruckCareGroupMemberToInactive.withArgs(eventKey).calledOnce, 'called props action method _updateTruckCareGroupMemberToInactive');
         });
     });
 

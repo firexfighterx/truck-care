@@ -13,11 +13,11 @@ export class TruckDetail extends Component {
     }
 
     _updateTruckCareGroupMemberToActive(eventKey){
-      this.props.actions.updateMemberIsActiveStatus(eventKey, true);
+      this.props.actions.updateTruckCareGroupMemberToActive(eventKey);
     }
 
     _updateTruckCareGroupMemberToInactive(id){
-      this.props.actions.updateMemberIsActiveStatus(id, false);
+      this.props.actions.updateTruckCareGroupMemberToInactive(id);
     }
 
     render() {
