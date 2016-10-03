@@ -7,11 +7,11 @@ class ApiHelper {
     }
 
     static get(url, data) {
-        return this.performAjax({
-            url: url,
-            type: 'GET',
-            data: data
-        });
+        return this.performAjax({url: url, type: 'GET', data: data});
+    }
+
+    static put(url, data) {
+        return this.performAjax({url, type: 'PUT', data});
     }
 }
 

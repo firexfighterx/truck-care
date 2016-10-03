@@ -46,4 +46,22 @@ describe('ApiHelper', () => {
         });
     });
 
+    describe('put', () => {
+        it('sends a put call with the provided request object', () => {
+            let url = 'the url';
+            let data = {};
+            let expectedRequest = {
+                url: url,
+                type: 'PUT',
+                data: data
+            };
+            let performAjaxReturnValue = {};
+            let performAjax = sandbox.stub(ApiHelper, 'performAjax').returns(performAjaxReturnValue);
+
+            ApiHelper.put(url, data);
+
+            assert(performAjax.withArgs(expectedRequest).calledOnce, 'called perform AJAX with request object');
+        });
+    });
+
 });
