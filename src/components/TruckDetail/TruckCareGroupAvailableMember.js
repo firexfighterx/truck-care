@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {MenuItem, DropdownButton} from 'react-bootstrap';
 
-const TruckCareGroupAvailableMember = ({members}) => {
+const TruckCareGroupAvailableMember = ({members, updateTruckCareGroupMemberToActive}) => {
   let items = members.map(member => {
     return (<MenuItem key={member.id} eventKey={member.id}>
       {member.name}
@@ -13,14 +13,15 @@ const TruckCareGroupAvailableMember = ({members}) => {
       bsStyle="link"
       noCaret
       title="Add"
-      id="add-truck-care-user">
+      id="add-truck-care-user" onSelect={updateTruckCareGroupMemberToActive}>
       {items}
     </DropdownButton>
   );
 };
 
 TruckCareGroupAvailableMember.propTypes = {
-    members: PropTypes.array
+    members: PropTypes.array,
+    updateTruckCareGroupMemberToActive: PropTypes.func
 };
 
 export default TruckCareGroupAvailableMember;

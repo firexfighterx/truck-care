@@ -12,14 +12,16 @@ describe('TruckCareGroupAvailableMember', () => {
                     name: 'Joe Schmoe'
                 }
             ];
+            let updateTruckCareGroupMemberToActive = () => {};
 
-            let actual = new TruckCareGroupAvailableMember({members});
+            let actual = new TruckCareGroupAvailableMember({members, updateTruckCareGroupMemberToActive});
 
             let result = ShallowTestUtils.findAllWithType(actual, DropdownButton);
             let menuItem = ShallowTestUtils.findAllWithType(actual, MenuItem);
 
             assert.strictEqual(result.length, 1, 'one drop down rendered');
             assert.strictEqual(result[0].props.title, 'Add');
+            assert.strictEqual(result[0].props.onSelect, updateTruckCareGroupMemberToActive);
             assert.strictEqual(menuItem[0].props.children, 'Joe Schmoe', 'Joe Schmoe was set as text');
             assert.strictEqual(menuItem[0].props.eventKey, 1, 'event key was set with id');
         });
