@@ -2,13 +2,13 @@ import React, {PropTypes} from 'react';
 import {Row,Col,Panel, Label} from 'react-bootstrap';
 import TruckCareGroupActiveMember from './TruckCareGroupActiveMember';
 import TruckCareGroupAvailableMember from './TruckCareGroupAvailableMember';
-const TruckCareGroup = ({truckCareGroup}) => {
+const TruckCareGroup = ({truckCareGroup, updateTruckCareGroupMemberToActive, updateTruckCareGroupMemberToInactive}) => {
 
   let dropDown = (truckCareGroup.members || []).length > 0
-  ? <TruckCareGroupAvailableMember members={truckCareGroup.members} /> : null;
+  ? <TruckCareGroupAvailableMember updateTruckCareGroupMemberToActive={updateTruckCareGroupMemberToActive} members={truckCareGroup.members} /> : null;
 
   let activeMembers = (truckCareGroup.activeMembers || []).length > 0
-  ? truckCareGroup.activeMembers.map(member => <TruckCareGroupActiveMember key={member.id} member={member} />)
+  ? truckCareGroup.activeMembers.map(member => <TruckCareGroupActiveMember updateTruckCareGroupMemberToInactive={updateTruckCareGroupMemberToInactive} key={member.id} member={member} />)
   : <Label>No one actively performing Truck Care</Label>;
 
     let title = <h2>Truck Care Group: <strong>{truckCareGroup.groupName}</strong></h2>;
@@ -25,7 +25,9 @@ const TruckCareGroup = ({truckCareGroup}) => {
 };
 
 TruckCareGroup.propTypes = {
-    truckCareGroup: PropTypes.object
+    truckCareGroup: PropTypes.object,
+    updateTruckCareGroupMemberToActive: PropTypes.func,
+    updateTruckCareGroupMemberToInactive: PropTypes.func
 };
 
 export default TruckCareGroup;

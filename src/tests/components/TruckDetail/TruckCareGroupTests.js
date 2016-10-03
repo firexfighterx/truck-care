@@ -56,12 +56,34 @@ describe('TruckCareGroup', () => {
             let truckCareGroup = {
                 activeMembers
             };
+            let updateTruckCareGroupMemberToInactive = () => {};
 
-            let actual = TruckCareGroup({truckCareGroup});
+            let actual = TruckCareGroup({truckCareGroup, updateTruckCareGroupMemberToInactive});
 
             let result = ShallowTestUtils.findAllWithType(actual, TruckCareGroupActiveMember);
 
             assert.strictEqual(result.length, 1, 'one Active Member was rendered');
+            assert.strictEqual(result[0].props.updateTruckCareGroupMemberToInactive, updateTruckCareGroupMemberToInactive, 'updateTruckCareGroupMemberToInactive set as a prop');
+        });
+
+        it('renders a drop down with members that are available', () => {
+            let members = [
+                {
+                    id: 1,
+                    name: 'Foo Bar'
+                }
+            ];
+            let truckCareGroup = {
+                members
+            };
+            let updateTruckCareGroupMemberToActive = () => {};
+
+            let actual = TruckCareGroup({truckCareGroup, updateTruckCareGroupMemberToActive});
+
+            let result = ShallowTestUtils.findAllWithType(actual, TruckCareGroupAvailableMember);
+
+            assert.strictEqual(result.length, 1, 'one TruckCareGroupAvailableMember component rendered');
+            assert.strictEqual(result[0].props.updateTruckCareGroupMemberToActive, updateTruckCareGroupMemberToActive, 'updateTruckCareGroupMemberToActive set as a prop');
         });
 
         it('does not render active truck care member when no activeMembers', () => {
