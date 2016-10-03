@@ -16,10 +16,21 @@ export class TruckDetail extends Component {
       this.props.actions.updateMemberIsActiveStatus(eventKey, true);
     }
 
+    _updateTruckCareGroupMemberToInactive(id){
+      this.props.actions.updateMemberIsActiveStatus(id, false);
+    }
+
     render() {
+
+        let truckCareGroup = {
+          updateTruckCareGroupMemberToActive: this._updateTruckCareGroupMemberToActive.bind(this),
+          updateTruckCareGroupMemberToInActive: this._updateTruckCareGroupMemberToInactive.bind(this),
+          truckCareGroup: this.props.truckCareGroup
+        };
+
         return (
           <Grid>
-            <TruckCareGroup updateTruckCareGroupMemberToActive={this._updateTruckCareGroupMemberToActive.bind(this)} truckCareGroup={this.props.truckCareGroup} />
+            <TruckCareGroup {...truckCareGroup} />
             <Row>
               <Panel>
                 {this.props.currentTruck}
