@@ -81,7 +81,7 @@ describe('TruckDetail', () => {
             assert.strictEqual(group.length, 1, 'one TruckCareGroup rendered');
             assert.strictEqual(group[0].props.truckCareGroup, truckCareGroup, 'props truckCareGroup was passed to TruckCareGroup');
             assert.strictEqual(group[0].props.updateTruckCareGroupMemberToActive, bound_active_function, 'bound updateTruckCareGroupMemberToActive passed in as props to TruckCareGroup');
-            assert.strictEqual(group[0].props.updateTruckCareGroupMemberToInActive, bound_inactive_function, 'bound updateTruckCareGroupMemberToInActive passed in as props to TruckCareGroup');
+            assert.strictEqual(group[0].props.updateTruckCareGroupMemberToInactive, bound_inactive_function, 'bound updateTruckCareGroupMemberToInActive passed in as props to TruckCareGroup');
         });
     });
 });

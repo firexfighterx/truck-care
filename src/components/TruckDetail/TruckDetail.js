@@ -24,7 +24,7 @@ export class TruckDetail extends Component {
 
         let truckCareGroup = {
           updateTruckCareGroupMemberToActive: this._updateTruckCareGroupMemberToActive.bind(this),
-          updateTruckCareGroupMemberToInActive: this._updateTruckCareGroupMemberToInactive.bind(this),
+          updateTruckCareGroupMemberToInactive: this._updateTruckCareGroupMemberToInactive.bind(this),
           truckCareGroup: this.props.truckCareGroup
         };
 
