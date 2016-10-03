@@ -27,4 +27,17 @@ describe('MessageFactory', () => {
             assert.deepEqual(actual, expected, 'returned expected message to display');
         });
     });
+
+    describe('createFailedToUpdateMemberStatus', () => {
+        it('returns a message to show when fails to update truck care group member', () => {
+            let expected = {
+                type: 'danger',
+                message: 'Failed to update Truck-Care Group member\'s status'
+            };
+
+            let actual = MessageFactory.createFailedToUpdateMemberStatus();
+
+            assert.deepEqual(actual, expected, 'returned expected message to display');
+        });
+    });
 });
