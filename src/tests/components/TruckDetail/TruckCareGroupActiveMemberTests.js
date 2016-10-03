@@ -1,22 +1,38 @@
 import assert from 'assert';
+import sinon from 'sinon';
 import {ButtonGroup, Button} from 'react-bootstrap';
 import * as ShallowTestUtils from 'react-shallow-testutils';
 import TruckCareGroupActiveMember from '../../../components/TruckDetail/TruckCareGroupActiveMember';
 
 describe('TruckCareGroupActiveMember', () => {
-    it('render', () => {
-        let member = {
-            id: 1,
-            name: 'Foo Barred'
-        };
+    let sandbox;
 
-        let actual = TruckCareGroupActiveMember({member});
+    beforeEach(() => {
+        sandbox = sinon.sandbox.create();
+    });
 
-        let buttonGroup = ShallowTestUtils.findAllWithType(actual, ButtonGroup);
-        let buttons = ShallowTestUtils.findAllWithType(actual, Button);
+    afterEach(() => {
+        sandbox.restore();
+    });
 
-        assert.strictEqual(buttonGroup.length, 1, 'one button group was rendered');
-        assert.strictEqual(buttons.length, 2, 'two buttons rendered');
-        assert.strictEqual(buttons[0].props.children, 'Foo Barred', 'name was set as text');
+    describe('render', () => {
+        it('renders a button group for an active member', () => {
+            let member = {
+                id: 1,
+                name: 'Foo Barred'
+            };
+            let updateTruckCareGroupMemberToInactive = {
+                bind: () => {}
+            };
+
+            let actual = TruckCareGroupActiveMember({member, updateTruckCareGroupMemberToInactive});
+
+            let buttonGroup = ShallowTestUtils.findAllWithType(actual, ButtonGroup);
+            let buttons = ShallowTestUtils.findAllWithType(actual, Button);
+
+            assert.strictEqual(buttonGroup.length, 1, 'one button group was rendered');
+            assert.strictEqual(buttons.length, 2, 'two buttons rendered');
+            assert.strictEqual(buttons[0].props.children, 'Foo Barred', 'name was set as text');
+        });
     });
 });
