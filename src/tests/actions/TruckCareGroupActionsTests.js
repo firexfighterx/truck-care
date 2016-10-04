@@ -80,6 +80,53 @@ describe('TruckCareGroupActions', () => {
         });
     });
 
+    describe('updateTruckCareGroupMemberToInactive', (done) => {
+        const mockStore = configureMockStore([thunk]);
+        it('dispatches LOAD_TRUCK_CARE_GROUP_SUCCESS after update member to inactive', () => {
+            const expectedActions = [
+                {
+                    type: types.LOAD_TRUCK_CARE_GROUP_SUCCESS,
+                    truckCareGroup: {}
+                }
+            ];
+            const store = mockStore({
+                truckCareGroup: {}
+            }, expectedActions, done);
+            let id = 12;
+
+            let updateTruckCareGroupMemberToInactive = sandbox.stub(TruckCareApi, 'updateTruckCareGroupMemberToInactive').returns(Promise.resolve());
+            store.dispatch(TruckCareGroupActions.updateTruckCareGroupMemberToInactive(id)).then(() => {
+                const actions = store.getActions();
+                assert.strictEqual(actions[0].type, types.LOAD_TRUCK_CARE_GROUP_SUCCESS);
+                assert(updateTruckCareGroupMemberToInactive.withArgs(id).calledOnce, 'called updateTruckCareGroupMemberToInactive to update active member');
+                done();
+            });
+        });
+
+        it('dispatches SET_GLOBAL_ERROR when updating updateTruckCareGroupMemberToInactive fails', (done) => {
+            const expectedActions = [
+                {
+                    type: types.SET_GLOBAL_ERROR,
+                    globalErrorNotification: {}
+                }
+            ];
+
+            const store = mockStore({
+                trucks: []
+            }, expectedActions, done);
+            let failureMessage = {};
+            let id = 12;
+            let createFailedToUpdateMemberStatus = sandbox.stub(MessageFactory, 'createFailedToUpdateMemberStatus').returns(failureMessage);
+            let updateTruckCareGroupMemberToActive = sandbox.stub(TruckCareApi, 'updateTruckCareGroupMemberToInactive').returns(Promise.reject());
+            store.dispatch(TruckCareGroupActions.updateTruckCareGroupMemberToInactive(id)).then(() => {
+                const actions = store.getActions();
+                assert.strictEqual(actions[0].type, types.SET_GLOBAL_ERROR);
+                assert(createFailedToUpdateMemberStatus.calledOnce, 'called createFailedToUpdateMemberStatus to get message to display');
+                done();
+            });
+        });
+    });
+
     describe('loadTruckCareGroup', () => {
         const mockStore = configureMockStore([thunk]);
         it('dispatches LOAD_TRUCK_CARE_GROUP_SUCCESS when loading truck care group succeeds', (done) => {

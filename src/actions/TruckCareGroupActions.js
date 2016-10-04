@@ -17,6 +17,16 @@ export function updateTruckCareGroupMemberToActive(id) {
     };
 }
 
+export function updateTruckCareGroupMemberToInactive(id) {
+    return (dispatch) => {
+        return TruckCareApi.updateTruckCareGroupMemberToInactive(id).then(activeGroup => {
+            dispatch(loadTruckCareGroupSuccess(activeGroup));
+        }).catch(error => {
+            dispatch(GlobalErrorActions.setGlobalError(MessageFactory.createFailedToUpdateMemberStatus()));
+        });
+    };
+}
+
 export function loadTruckCareGroup() {
     return (dispatch) => {
         return TruckCareApi.getTruckCareGroup().then(activeGroup => {
