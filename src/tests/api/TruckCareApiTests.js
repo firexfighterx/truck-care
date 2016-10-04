@@ -53,4 +53,18 @@ describe('TruckCareApi', () => {
             assert(apiHelperGet.withArgs(url, formData).calledOnce, 'called api helper\'s get method');
         });
     });
+
+    describe('updateTruckCareGroupMemberToInctive', () => {
+        it('updates the truck group member to active', () => {
+            let API_GET_OBJECT = {};
+            let url = 'http://localhost:3000/api/group/member/1/deactivate';
+            let formData = {};
+            let id = 1;
+
+            let apiHelperGet = sandbox.stub(TruckCareApi, 'put').returns(API_GET_OBJECT);
+
+            let result = TruckCareApi.updateTruckCareGroupMemberToInactive(id);
+            assert(apiHelperGet.withArgs(url, formData).calledOnce, 'called api helper\'s get method');
+        });
+    });
 });
