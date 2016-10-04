@@ -2,9 +2,9 @@ import sinon from 'sinon';
 import assert from 'assert';
 import * as ShallowTestUtils from 'react-shallow-testutils';
 import {Panel, Label} from 'react-bootstrap';
-import TruckCareGroup from '../../../components/TruckDetail/TruckCareGroup';
-import TruckCareGroupAvailableMember from '../../../components/TruckDetail/TruckCareGroupAvailableMember';
-import TruckCareGroupActiveMember from '../../../components/TruckDetail/TruckCareGroupActiveMember';
+import TruckCareGroup from '../../../components/TruckCareGroup/TruckCareGroup';
+import TruckCareGroupAvailableMember from '../../../components/TruckCareGroup/TruckCareGroupAvailableMember';
+import TruckCareGroupActiveMember from '../../../components/TruckCareGroup/TruckCareGroupActiveMember';
 
 describe('TruckCareGroup', () => {
     let sandbox;

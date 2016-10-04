@@ -2,7 +2,7 @@ import assert from 'assert';
 import sinon from 'sinon';
 import {ButtonGroup, Button} from 'react-bootstrap';
 import * as ShallowTestUtils from 'react-shallow-testutils';
-import TruckCareGroupActiveMember from '../../../components/TruckDetail/TruckCareGroupActiveMember';
+import TruckCareGroupActiveMember from '../../../components/TruckCareGroup/TruckCareGroupActiveMember';
 
 describe('TruckCareGroupActiveMember', () => {
     let sandbox;

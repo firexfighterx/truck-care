@@ -1,7 +1,7 @@
 import assert from 'assert';
 import * as ShallowTestUtils from 'react-shallow-testutils';
 import {DropdownButton, MenuItem} from 'react-bootstrap';
-import TruckCareGroupAvailableMember from '../../../components/TruckDetail/TruckCareGroupAvailableMember';
+import TruckCareGroupAvailableMember from '../../../components/TruckCareGroup/TruckCareGroupAvailableMember';
 
 describe('TruckCareGroupAvailableMember', () => {
     describe('render', () => {

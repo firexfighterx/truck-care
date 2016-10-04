@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Row, Col, Grid, Panel} from 'react-bootstrap';
-import TruckCareGroup from './TruckCareGroup';
+import TruckCareGroup from '../TruckCareGroup/TruckCareGroup';
 import * as TruckCareGroupActions from '../../actions/TruckCareGroupActions';
 
 export class TruckDetail extends Component {

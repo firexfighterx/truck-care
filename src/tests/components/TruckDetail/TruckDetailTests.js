@@ -3,7 +3,7 @@ import assert from 'assert';
 import {Panel} from 'react-bootstrap';
 import * as ShallowTestUtils from 'react-shallow-testutils';
 import {TruckDetail} from '../../../components/TruckDetail/TruckDetail';
-import TruckCareGroup from '../../../components/TruckDetail/TruckCareGroup';
+import TruckCareGroup from '../../../components/TruckCareGroup/TruckCareGroup';
 
 describe('TruckDetail', () => {
     let sandbox;
