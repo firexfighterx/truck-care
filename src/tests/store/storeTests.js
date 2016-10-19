@@ -5,6 +5,7 @@ import initialState from '../../reducers/InitialState';
 import * as truckCareActions from '../../actions/TruckListActions';
 import * as truckCareGroupActions from '../../actions/TruckCareGroupActions';
 import * as globalErrorActions from '../../actions/GlobalErrorActions';
+import * as categoryDetailActions from '../../actions/CategoryDetailActions';
 
 describe('Store', function() {
     it('should update store with dispatched trucks', () => {
@@ -53,5 +54,29 @@ describe('Store', function() {
         let actual = store.getState().truckCareGroup;
 
         assert.deepEqual(actual, truckCareGroup, 'truck care group was set on the store');
+    });
+
+    it('should update store with dispatched category details', () => {
+        let store = createStore(rootReducer, initialState);
+        let detail = {
+            category: "Truck Essentials",
+            responsibilities: [
+                {
+                    responsibilityId: 1,
+                    truckNumber: "2412",
+                    category: "Truck Essentials",
+                    responsibility: "Truck Inventory"
+                }
+            ]
+        };
+        let categoryDetails = [detail];
+
+        let action = categoryDetailActions.loadCategoryDetailsSuccess(categoryDetails);
+
+        store.dispatch(action);
+
+        let actual = store.getState().categoryDetails;
+
+        assert.deepEqual(actual, categoryDetails, 'category details were set on the store');
     });
 });

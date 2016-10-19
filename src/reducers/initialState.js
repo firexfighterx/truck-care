@@ -1,5 +1,6 @@
 export default {
     trucks : [],
     globalErrorNotification : {},
-    truckCareGroup : {}
+    truckCareGroup : {},
+    categoryDetails : []
 };
