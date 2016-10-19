@@ -40,4 +40,18 @@ describe('MessageFactory', () => {
             assert.deepEqual(actual, expected, 'returned expected message to display');
         });
     });
+
+    describe('createGetCategoryDetailsFailure', () => {
+        it('returns a message to show when fails to get category details for a truckNumber', () => {
+            let truckNumber = 2413;
+            let expected = {
+                type: 'danger',
+                message: `Failed to get category details for ${truckNumber}`
+            };
+
+            let actual = MessageFactory.createGetCategoryDetailsFailure(truckNumber);
+
+            assert.deepEqual(actual, expected, 'returned expected message to display');
+        });
+    });
 });

@@ -19,7 +19,9 @@ class TruckCareApi extends ApiHelper {
         return this.put(`http://${EnvironmentUrls.baseUrl}/api/group/member/${id}/deactivate`, {});
     }
 
-    static getCategoryDetails(truckNumber) {}
+    static getCategoryDetails(truckNumber) {
+        return this.get(`http://${EnvironmentUrls.baseUrl}/api/truck/${truckNumber}/category/details`, {});
+    }
 }
 
 export default TruckCareApi;

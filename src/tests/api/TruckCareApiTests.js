@@ -67,4 +67,18 @@ describe('TruckCareApi', () => {
             assert(apiHelperGet.withArgs(url, formData).calledOnce, 'called api helper\'s get method');
         });
     });
+
+    describe('getCategoryDetails', () => {
+        it('gets the category and category details', () => {
+            let API_GET_OBJECT = {};
+            let truckNumber = 2412;
+            let url = `http://localhost:3000/api/truck/${truckNumber}/category/details`;
+            let formData = {};
+
+            let apiHelperGet = sandbox.stub(TruckCareApi, 'get').returns(API_GET_OBJECT);
+
+            let result = TruckCareApi.getCategoryDetails(truckNumber);
+            assert(apiHelperGet.withArgs(url, formData).calledOnce, 'called api helper\'s get method');
+        });
+    });
 });
