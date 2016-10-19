@@ -14,6 +14,8 @@ class MessageFactory {
     static createFailedToUpdateMemberStatus() {
         return createError('Failed to update Truck-Care Group member\'s status');
     }
+
+    static createGetCategoryDetailsFailure(truckNumber) {}
 }
 
 export default MessageFactory;

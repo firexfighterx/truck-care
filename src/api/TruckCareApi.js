@@ -18,6 +18,8 @@ class TruckCareApi extends ApiHelper {
     static updateTruckCareGroupMemberToInactive(id) {
         return this.put(`http://${EnvironmentUrls.baseUrl}/api/group/member/${id}/deactivate`, {});
     }
+
+    static getCategoryDetails(truckNumber) {}
 }
 
 export default TruckCareApi;
