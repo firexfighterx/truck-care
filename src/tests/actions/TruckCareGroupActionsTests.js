@@ -80,9 +80,9 @@ describe('TruckCareGroupActions', () => {
         });
     });
 
-    describe('updateTruckCareGroupMemberToInactive', (done) => {
+    describe('updateTruckCareGroupMemberToInactive', () => {
         const mockStore = configureMockStore([thunk]);
-        it('dispatches LOAD_TRUCK_CARE_GROUP_SUCCESS after update member to inactive', () => {
+        it('dispatches LOAD_TRUCK_CARE_GROUP_SUCCESS after update member to inactive', (done) => {
             const expectedActions = [
                 {
                     type: types.LOAD_TRUCK_CARE_GROUP_SUCCESS,
