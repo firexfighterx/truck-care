@@ -3,6 +3,7 @@ import assert from 'assert';
 import {Panel} from 'react-bootstrap';
 import * as ShallowTestUtils from 'react-shallow-testutils';
 import {TruckDetail} from '../../../components/TruckDetail/TruckDetail';
+import CategoryDetails from '../../../components/TruckDetail/CategoryDetails';
 import TruckCareGroup from '../../../components/TruckCareGroup/TruckCareGroup';
 
 describe('TruckDetail', () => {
@@ -14,6 +15,27 @@ describe('TruckDetail', () => {
 
     afterEach(() => {
         sandbox.restore();
+    });
+
+    describe('componentWillReceiveProps', () => {
+        it('calls categoryDetailActions with the selected truck', () => {
+            let loadCategoryDetailSpy = sandbox.spy();
+            let props = {
+                categoryDetailActions: {
+                    loadCategoryDetail: loadCategoryDetailSpy
+                }
+            };
+            let currentTruck = 2412;
+            let nextProps = {
+                currentTruck
+            };
+
+            let testObject = new TruckDetail(props);
+
+            testObject.componentWillReceiveProps(nextProps);
+
+            assert(loadCategoryDetailSpy.withArgs(currentTruck).calledOnce, 'called category action with next props current truck');
+        });
     });
 
     describe('_updateTruckCareGroupMemberToActive', () => {
@@ -57,14 +79,28 @@ describe('TruckDetail', () => {
     });
 
     describe('render', () => {
-        it('renders a the query string value tied to props', () => {
+        it('renders the query string value tied to props', () => {
             let testObject = new TruckDetail({currentTruck: '2400'});
 
             let actual = testObject.render();
 
             let result = ShallowTestUtils.findAllWithType(actual, Panel);
 
-            assert.strictEqual(result[0].props.children, '2400', 'currentTruck was rendered');
+            assert.strictEqual(result[0].props.children[0], '2400', 'currentTruck was rendered');
+        });
+
+        it('renders a CategoryDetails Component', () => {
+            let categoryDetails = {};
+            let actions = {};
+            let testObject = new TruckDetail({categoryDetails, categoryDetailActions: actions});
+
+            let result = testObject.render();
+
+            let actual = ShallowTestUtils.findAllWithType(result, CategoryDetails);
+
+            assert.strictEqual(actual.length, 1, 'one CategoryDetails component was rendered');
+            assert.strictEqual(actual[0].props.actions, actions, 'actions was passed to CategoryDetails');
+            assert.strictEqual(actual[0].props.categoryDetails, categoryDetails, 'categoryDetails was passed to CategoryDetails');
         });
 
         it('renders a Truck Care Group with props', () => {
