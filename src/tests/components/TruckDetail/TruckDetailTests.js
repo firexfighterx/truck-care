@@ -36,6 +36,27 @@ describe('TruckDetail', () => {
 
             assert(loadCategoryDetailSpy.withArgs(currentTruck).calledOnce, 'called category action with next props current truck');
         });
+
+        it('does not call loadCategoryDetail when nextProps and current props match', () => {
+            let loadCategoryDetailSpy = sandbox.spy();
+            let currentTruck = 2412;
+            let props = {
+                currentTruck,
+                categoryDetailActions: {
+                    loadCategoryDetail: loadCategoryDetailSpy
+                }
+            };
+
+            let nextProps = {
+                currentTruck
+            };
+
+            let testObject = new TruckDetail(props);
+
+            testObject.componentWillReceiveProps(nextProps);
+
+            assert(loadCategoryDetailSpy.notCalled, 'does not call loadCategoryDetail');
+        });
     });
 
     describe('_updateTruckCareGroupMemberToActive', () => {

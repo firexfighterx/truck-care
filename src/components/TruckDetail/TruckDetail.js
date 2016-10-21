@@ -15,7 +15,10 @@ export class TruckDetail extends Component {
     }
 
     componentWillReceiveProps(nextProps){
-      this.props.categoryDetailActions.loadCategoryDetail(nextProps.currentTruck);
+      if(nextProps.currentTruck != this.props.currentTruck){
+        this.props.categoryDetailActions.loadCategoryDetail(nextProps.currentTruck);
+      }
+
     }
 
     _updateTruckCareGroupMemberToActive(eventKey){
@@ -55,7 +58,7 @@ export class TruckDetail extends Component {
 TruckDetail.propTypes = {
     currentTruck: PropTypes.string.isRequired,
     truckCareGroup: PropTypes.object,
-    categoryDetails: PropTypes.object,
+    categoryDetails: PropTypes.array,
     actions: PropTypes.object,
     categoryDetailActions: PropTypes.object
 };
