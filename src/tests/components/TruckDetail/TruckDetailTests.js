@@ -23,9 +23,32 @@ describe('TruckDetail', () => {
             let props = {
                 categoryDetailActions: {
                     loadCategoryDetail: loadCategoryDetailSpy
-                }
+                },
+                categoryDetails: []
             };
             let currentTruck = 2412;
+            let nextProps = {
+                currentTruck
+            };
+
+            let testObject = new TruckDetail(props);
+
+            testObject.componentWillReceiveProps(nextProps);
+
+            assert(loadCategoryDetailSpy.withArgs(currentTruck).calledOnce, 'called category action with next props current truck');
+        });
+
+        it('calls categoryDetailActions when categories have not been loaded', () => {
+            let loadCategoryDetailSpy = sandbox.spy();
+            let currentTruck = 2412;
+
+            let props = {
+                currentTruck,
+                categoryDetailActions: {
+                    loadCategoryDetail: loadCategoryDetailSpy
+                },
+                categoryDetails: []
+            };
             let nextProps = {
                 currentTruck
             };
@@ -44,7 +67,8 @@ describe('TruckDetail', () => {
                 currentTruck,
                 categoryDetailActions: {
                     loadCategoryDetail: loadCategoryDetailSpy
-                }
+                },
+                categoryDetails: [{}]
             };
 
             let nextProps = {

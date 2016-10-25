@@ -15,7 +15,7 @@ export class TruckDetail extends Component {
     }
 
     componentWillReceiveProps(nextProps){
-      if(nextProps.currentTruck != this.props.currentTruck){
+      if(this.props.categoryDetails.length == 0 || nextProps.currentTruck != this.props.currentTruck){
         this.props.categoryDetailActions.loadCategoryDetail(nextProps.currentTruck);
       }
 
