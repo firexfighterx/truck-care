@@ -1,7 +1,7 @@
 import assert from 'assert';
 import {createStore} from 'redux';
 import rootReducer from '../../reducers';
-import initialState from '../../reducers/InitialState';
+import initialState from '../../reducers/State';
 import * as truckCareActions from '../../actions/TruckListActions';
 import * as truckCareGroupActions from '../../actions/TruckCareGroupActions';
 import * as globalErrorActions from '../../actions/GlobalErrorActions';

@@ -1,7 +1,7 @@
 import * as types from '../actions/Actions';
-import initialState from './InitialState';
+import State from './State';
 
-export default function TruckCareGroupReducer(state = initialState.truckCareGroup, action) {
+export default function TruckCareGroupReducer(state = State.truckCareGroup, action) {
     if (action.type === types.LOAD_TRUCK_CARE_GROUP_SUCCESS) {
         return Object.assign({}, state, action.truckCareGroup);
     }
