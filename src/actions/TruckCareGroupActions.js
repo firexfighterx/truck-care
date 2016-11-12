@@ -1,10 +1,10 @@
-import * as actionTypes from './ActionTypes';
+import * as Actions from './Actions';
 import TruckCareApi from '../api/TruckCareApi';
 import * as GlobalErrorActions from './GlobalErrorActions';
 import MessageFactory from '../factories/MessageFactory';
 
 export function loadTruckCareGroupSuccess(truckCareGroup) {
-    return {type: actionTypes.LOAD_TRUCK_CARE_GROUP_SUCCESS, truckCareGroup};
+    return {type: Actions.LOAD_TRUCK_CARE_GROUP_SUCCESS, truckCareGroup};
 }
 
 export function updateTruckCareGroupMemberToActive(id) {

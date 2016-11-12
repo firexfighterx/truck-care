@@ -1,4 +1,4 @@
-import * as types from '../actions/ActionTypes';
+import * as types from '../actions/Actions';
 import initialState from './InitialState';
 
 export default function GlobalErrorReducer(state = initialState.globalErrorNotification, action) {

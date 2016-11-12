@@ -2,7 +2,7 @@ import sinon from 'sinon';
 import assert from 'assert';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import * as types from '../../actions/ActionTypes';
+import * as types from '../../actions/Actions';
 import * as CategoryDetailActions from '../../actions/CategoryDetailActions';
 import TruckCareApi from '../../api/TruckCareApi';
 import MessageFactory from '../../factories/MessageFactory';

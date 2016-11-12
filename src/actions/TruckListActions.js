@@ -1,6 +1,6 @@
 import {push} from 'react-router-redux';
 import {browserHistory} from 'react-router';
-import * as types from './ActionTypes';
+import * as types from './Actions';
 import TruckCareApi from '../api/TruckCareApi';
 import * as GlobalErrorActions from './GlobalErrorActions';
 import MessageFactory from '../factories/MessageFactory';

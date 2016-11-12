@@ -4,7 +4,7 @@ import * as TruckCareActions from '../../actions/TruckListActions';
 import * as GlobalErrorActions from '../../actions/GlobalErrorActions';
 import MessageFactory from '../../factories/MessageFactory';
 import TruckCareApi from '../../api/TruckCareApi';
-import * as types from '../../actions/ActionTypes';
+import * as types from '../../actions/Actions';
 import thunk from 'redux-thunk';
 import {browserHistory} from 'react-router';
 import configureMockStore from 'redux-mock-store';
