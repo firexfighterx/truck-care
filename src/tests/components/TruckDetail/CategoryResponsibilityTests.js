@@ -1,13 +1,13 @@
 import assert from 'assert';
 import * as ShallowTestUtils from 'react-shallow-testutils';
-import {Well, Label} from 'react-bootstrap';
+import {Panel, Label} from 'react-bootstrap';
 import CategoryResponsibility from '../../../components/TruckDetail/CategoryResponsibility';
 import ResponsibilityOutcome from '../../../components/TruckDetail/ResponsibilityOutcome';
 
 describe('CategoryResponsibility', () => {
 
     describe('render', () => {
-        it('renders a well with the responsibilityItem', () => {
+        it('renders a Panel with the responsibilityItem', () => {
             let responsibilityItem = {
                 responsibilityId: 1,
                 responsibility: "Truck Inventory"
@@ -15,12 +15,11 @@ describe('CategoryResponsibility', () => {
             let responsibilityItems = [responsibilityItem];
 
             let result = CategoryResponsibility({responsibilityItems});
-            let wells = ShallowTestUtils.findAllWithType(result, Well);
+            let panels = ShallowTestUtils.findAllWithType(result, Panel);
             let responsibilityOutcome = ShallowTestUtils.findAllWithType(result, ResponsibilityOutcome);
 
-            assert.strictEqual(wells.length, 1, 'one well was rendered');
-            assert.strictEqual(wells[0].props.children[0], responsibilityItem.responsibility, 'responsibilityItem text was rendered');
-            assert.strictEqual(wells[0].key, `${responsibilityItem.responsibilityId}`, 'id used as key for well');
+            assert.strictEqual(panels.length, 1, 'one well was rendered');
+            assert.strictEqual(panels[0].key, `${responsibilityItem.responsibilityId}`, 'id used as key for well');
             assert.strictEqual(responsibilityOutcome.length, 1, 'one outcome rendered');
         });
 

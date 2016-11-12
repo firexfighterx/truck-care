@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import {Well, Label} from 'react-bootstrap';
+import {Panel, Label} from 'react-bootstrap';
 import ResponsibilityOutcome from './ResponsibilityOutcome';
 
 const CategoryResponsibility = ({responsibilityItems}) => {
@@ -10,7 +10,7 @@ const CategoryResponsibility = ({responsibilityItems}) => {
   }
   else{
     content = responsibilityItems.map(res => {
-      return <Well bsSize="small" key={res.responsibilityId}>{res.responsibility}<ResponsibilityOutcome /></Well>;
+      return <Panel bsSize="small" key={res.responsibilityId}>{res.responsibility}<ResponsibilityOutcome /></Panel>;
     });
   }
 
