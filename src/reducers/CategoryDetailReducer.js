@@ -1,7 +1,7 @@
 import * as types from '../actions/Actions';
-import State from './State';
+import initialState from './InitialState';
 
-export default function CategoryDetailReducer(state = State.categoryDetails, action) {
+export default function CategoryDetailReducer(state = initialState.categoryDetails, action) {
     if (action.type === types.GET_CATEGORY_DETAILS_SUCCESS) {
         return action.categoryDetails;
     }
