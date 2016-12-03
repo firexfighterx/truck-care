@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {Label, Panel, PanelGroup} from 'react-bootstrap';
 import CategoryResponsibility from './CategoryResponsibility';
 
-class CategoryDetails extends Component {
+class TruckCareCategory extends Component {
     constructor(props) {
         super(props);
     }
@@ -43,9 +43,9 @@ class CategoryDetails extends Component {
     }
 }
 
-CategoryDetails.propTypes = {
+TruckCareCategory.propTypes = {
     categoryDetails: PropTypes.array,
     actions: PropTypes.object
 };
 
-export default CategoryDetails;
+export default TruckCareCategory;

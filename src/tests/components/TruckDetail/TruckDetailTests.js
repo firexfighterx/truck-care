@@ -3,7 +3,7 @@ import assert from 'assert';
 import {Panel} from 'react-bootstrap';
 import * as ShallowTestUtils from 'react-shallow-testutils';
 import {TruckDetail} from '../../../components/TruckDetail/TruckDetail';
-import CategoryDetails from '../../../components/TruckDetail/CategoryDetails';
+import TruckCareCategory from '../../../components/TruckDetail/TruckCareCategory';
 import TruckCareGroup from '../../../components/TruckCareGroup/TruckCareGroup';
 
 describe('TruckDetail', () => {
@@ -141,7 +141,7 @@ describe('TruckDetail', () => {
 
             let result = testObject.render();
 
-            let actual = ShallowTestUtils.findAllWithType(result, CategoryDetails);
+            let actual = ShallowTestUtils.findAllWithType(result, TruckCareCategory);
 
             assert.strictEqual(actual.length, 1, 'one CategoryDetails component was rendered');
             assert.strictEqual(actual[0].props.actions, actions, 'actions was passed to CategoryDetails');

@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Row, Col, Grid, Panel} from 'react-bootstrap';
 import TruckCareGroup from '../TruckCareGroup/TruckCareGroup';
-import CategoryDetails from './CategoryDetails';
+import TruckCareCategory from './TruckCareCategory';
 import * as TruckCareGroupActions from '../../actions/TruckCareGroupActions';
 import * as CategoryDetailActions from '../../actions/CategoryDetailActions';
 
@@ -47,7 +47,7 @@ export class TruckDetail extends Component {
             <Row>
               <Panel>
                 {this.props.currentTruck}
-                <CategoryDetails {...categoryDetails} />
+                <TruckCareCategory {...categoryDetails} />
               </Panel>
             </Row>
           </Grid>

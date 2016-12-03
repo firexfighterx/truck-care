@@ -1,7 +1,7 @@
 import assert from 'assert';
 import * as ShallowTestUtils from 'react-shallow-testutils';
 import {Label, Panel} from 'react-bootstrap';
-import CategoryDetails from '../../../components/TruckDetail/CategoryDetails';
+import TruckCareCategory from '../../../components/TruckDetail/TruckCareCategory';
 import CategoryResponsibility from '../../../components/TruckDetail/CategoryResponsibility';
 
 describe('CategoryDetails', () => {
@@ -32,7 +32,7 @@ describe('CategoryDetails', () => {
             };
             let categoryDetails = [firstCategoryDetail, secondCategoryDetail];
 
-            let testObject = new CategoryDetails({categoryDetails});
+            let testObject = new TruckCareCategory({categoryDetails});
 
             let result = testObject.render();
             let categoryResponsibilities = ShallowTestUtils.findAllWithType(result, CategoryResponsibility);
@@ -50,7 +50,7 @@ describe('CategoryDetails', () => {
             let categoryDetails = [];
             let message = 'No Available Details';
 
-            let testObject = new CategoryDetails({categoryDetails});
+            let testObject = new TruckCareCategory({categoryDetails});
 
             let result = testObject.render();
             let categoryResponsibilities = ShallowTestUtils.findAllWithType(result, CategoryResponsibility);
