@@ -1,6 +1,6 @@
 import assert from 'assert';
 import * as ShallowTestUtils from 'react-shallow-testutils';
-import {Panel, Label} from 'react-bootstrap';
+import {Panel, Label, Col} from 'react-bootstrap';
 import CategoryResponsibility from '../../../components/TruckDetail/CategoryResponsibility';
 import ResponsibilityOutcome from '../../../components/TruckDetail/ResponsibilityOutcome';
 
@@ -31,6 +31,36 @@ describe('CategoryResponsibility', () => {
 
             assert.strictEqual(label.length, 1, 'one label rendered');
             assert.strictEqual(label[0].props.children, 'No Available Details', 'Label text was set when no items');
+        });
+
+        it('renders two list of items when more than one Panel', () => {
+            const RESPONSIBILITY1 = 'Truck Inventory';
+            const RESPONSIBILITY2 = 'Washed';
+            const RESPONSIBILITY3 = 'Oil';
+            let responsibilityItem1 = {
+                responsibilityId: 1,
+                responsibility: RESPONSIBILITY1
+            };
+
+            let responsibilityItem2 = {
+                responsibilityId: 2,
+                responsibility: RESPONSIBILITY2
+            };
+
+            let responsibilityItem3 = {
+                responsibilityId: 2,
+                responsibility: RESPONSIBILITY3
+            };
+
+            let responsibilityItems = [responsibilityItem1, responsibilityItem2, responsibilityItem3];
+
+            let result = CategoryResponsibility({responsibilityItems});
+            let cols = ShallowTestUtils.findAllWithType(result, Col);
+
+            assert.strictEqual(cols.length, 3, 'three Cols rendered');
+            assert.strictEqual(cols[0].props.children[0].props.header, RESPONSIBILITY1, 'Truck Inventory in first row');
+            assert.strictEqual(cols[1].props.children[0].props.header, RESPONSIBILITY2, 'Washed in second row');
+            assert.strictEqual(cols[2].props.children[0].props.header, RESPONSIBILITY3, 'Oil in second row');
         });
     });
 });
