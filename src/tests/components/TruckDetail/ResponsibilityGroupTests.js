@@ -1,10 +1,10 @@
 import assert from 'assert';
 import * as ShallowTestUtils from 'react-shallow-testutils';
 import {Panel, Label, Col} from 'react-bootstrap';
-import CategoryResponsibility from '../../../components/TruckDetail/CategoryResponsibility';
+import ResponsibilityGroup from '../../../components/TruckDetail/ResponsibilityGroup';
 import ResponsibilityOutcome from '../../../components/TruckDetail/ResponsibilityOutcome';
 
-describe('CategoryResponsibility', () => {
+describe('ResponsibilityGroup', () => {
 
     describe('render', () => {
         it('renders a Panel with the responsibilityItem', () => {
@@ -14,7 +14,7 @@ describe('CategoryResponsibility', () => {
             };
             let responsibilityItems = [responsibilityItem];
 
-            let result = CategoryResponsibility({responsibilityItems});
+            let result = ResponsibilityGroup({responsibilityItems});
             let panels = ShallowTestUtils.findAllWithType(result, Panel);
             let responsibilityOutcome = ShallowTestUtils.findAllWithType(result, ResponsibilityOutcome);
 
@@ -26,7 +26,7 @@ describe('CategoryResponsibility', () => {
         it('renders a Label when no responsibilityItems are available', () => {
             let responsibilityItems = [];
 
-            let result = CategoryResponsibility({responsibilityItems});
+            let result = ResponsibilityGroup({responsibilityItems});
             let label = ShallowTestUtils.findAllWithType(result, Label);
 
             assert.strictEqual(label.length, 1, 'one label rendered');
@@ -54,7 +54,7 @@ describe('CategoryResponsibility', () => {
 
             let responsibilityItems = [responsibilityItem1, responsibilityItem2, responsibilityItem3];
 
-            let result = CategoryResponsibility({responsibilityItems});
+            let result = ResponsibilityGroup({responsibilityItems});
             let cols = ShallowTestUtils.findAllWithType(result, Col);
 
             assert.strictEqual(cols.length, 3, 'three Cols rendered');

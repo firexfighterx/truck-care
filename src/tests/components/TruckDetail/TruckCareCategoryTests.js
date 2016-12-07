@@ -2,9 +2,9 @@ import assert from 'assert';
 import * as ShallowTestUtils from 'react-shallow-testutils';
 import {Label, Panel} from 'react-bootstrap';
 import TruckCareCategory from '../../../components/TruckDetail/TruckCareCategory';
-import CategoryResponsibility from '../../../components/TruckDetail/CategoryResponsibility';
+import ResponsibilityGroup from '../../../components/TruckDetail/ResponsibilityGroup';
 
-describe('CategoryDetails', () => {
+describe('TruckCareCategory', () => {
     describe('render', () => {
         it('renders Category Containers', () => {
             let firstCategoryDetail = {
@@ -35,7 +35,7 @@ describe('CategoryDetails', () => {
             let testObject = new TruckCareCategory({categoryDetails});
 
             let result = testObject.render();
-            let categoryResponsibilities = ShallowTestUtils.findAllWithType(result, CategoryResponsibility);
+            let categoryResponsibilities = ShallowTestUtils.findAllWithType(result, ResponsibilityGroup);
             let categoryContainerPanels = ShallowTestUtils.findAllWithType(result, Panel);
 
             assert.strictEqual(categoryResponsibilities.length, 2, 'two Category Containers rendered');
@@ -53,7 +53,7 @@ describe('CategoryDetails', () => {
             let testObject = new TruckCareCategory({categoryDetails});
 
             let result = testObject.render();
-            let categoryResponsibilities = ShallowTestUtils.findAllWithType(result, CategoryResponsibility);
+            let categoryResponsibilities = ShallowTestUtils.findAllWithType(result, ResponsibilityGroup);
             let noCategoriesLabel = ShallowTestUtils.findAllWithType(result, Label);
 
             assert.strictEqual(categoryResponsibilities.length, 0, 'no category responsibilities rendered');

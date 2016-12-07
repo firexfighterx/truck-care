@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {Label, Panel, PanelGroup} from 'react-bootstrap';
-import CategoryResponsibility from './CategoryResponsibility';
+import ResponsibilityGroup from './ResponsibilityGroup';
 
 class TruckCareCategory extends Component {
     constructor(props) {
@@ -12,7 +12,7 @@ class TruckCareCategory extends Component {
             <Panel style={{
                 cursor: "pointer"
             }} eventKey={detail.category} header={detail.category} key={detail.category}>
-                <CategoryResponsibility key={detail.category} responsibilityItems={detail.responsibilities}/>
+                <ResponsibilityGroup key={detail.category} responsibilityItems={detail.responsibilities}/>
             </Panel>
         );
     }
