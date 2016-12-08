@@ -1,6 +1,8 @@
 import React, {PropTypes} from 'react';
 import {Panel, Label, Grid, Row, Col} from 'react-bootstrap';
 import ResponsibilityOutcome from './ResponsibilityOutcome';
+import ResponsibilityGroupColumn from './ResponsibilityGroupColumn';
+import _ from 'lodash';
 
 const ResponsibilityGroup = ({responsibilityItems}) => {
 
@@ -8,31 +10,18 @@ const ResponsibilityGroup = ({responsibilityItems}) => {
     if (responsibilityItems.length == 0) {
         content = <Label>No Available Details</Label>;
     } else {
-        let firstList = [];
-        let secondList = [];
-        let thirdList = [];
-        responsibilityItems.map((res, i) => {
-            let item = <Panel header={res.responsibility} bsSize="small" key={res.responsibilityId}><ResponsibilityOutcome/></Panel>;
-            if (i % 3 == 0) {
-                firstList.push(item);
-            } else if (i % 3 == 1) {
-                secondList.push(item);
-            } else {
-                thirdList.push(item);
-            }
-        });
         content = (
-            <Grid fluid={true}>
+            <Grid>
                 <Row>
-                    <Col mdOffset={1} md={3}>{firstList.map(res => {
-                            return res;
-                        })}</Col>
-                    <Col md={3}>{secondList.map(res => {
-                            return res;
-                        })}</Col>
-                    <Col md={3}>{thirdList.map(res => {
-                            return res;
-                        })}</Col>
+                    <ResponsibilityGroupColumn offset={1} md={3} responsibilities={_.filter(responsibilityItems, (item, index) => {
+                        return index % 3 == 0;
+                    })}/>
+                    <ResponsibilityGroupColumn md={3} responsibilities={_.filter(responsibilityItems, (item, index) => {
+                        return index % 3 == 1;
+                    })}/>
+                    <ResponsibilityGroupColumn md={3} responsibilities={_.filter(responsibilityItems, (item, index) => {
+                        return index % 3 == 2;
+                    })}/>
                 </Row>
             </Grid>
         );
