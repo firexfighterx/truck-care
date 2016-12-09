@@ -1,19 +1,19 @@
 import React, {Component, PropTypes} from 'react';
 import Responsibility from './Responsibility';
-import {Row} from 'react-bootstrap';
+import {Col} from 'react-bootstrap';
 
 const ResponsibilityGroupColumn = ({responsibilities, offset, md}) => {
   return(
-      <Row md={md} mdOffset={offset}>{responsibilities.map(item => {
-      return <Responsibility key={item.id} responsibility={item} />;
-    })}</Row>
+      <Col md={md} mdOffset={offset}>{responsibilities.map(item => {
+      return <Responsibility key={item.responsibilityId} responsibility={item} />;
+    })}</Col>
   );
 };
 
 ResponsibilityGroupColumn.propTypes = {
   responsibilities: PropTypes.array,
-  offset: PropTypes.int,
-  md: PropTypes.int
+  offset: PropTypes.number,
+  md: PropTypes.number
 };
 
 export default ResponsibilityGroupColumn;

@@ -1,6 +1,6 @@
 import assert from 'assert';
 import * as ShallowTestUtils from 'react-shallow-testutils';
-import {Row} from 'react-bootstrap';
+import {Col} from 'react-bootstrap';
 import ResponsibilityGroupColumn from '../../../components/TruckDetail/ResponsibilityGroupColumn';
 import Responsibility from '../../../components/TruckDetail/Responsibility';
 
@@ -34,14 +34,14 @@ describe('ResponsibilityGroupColumn', () => {
             assert.strictEqual(items[1].props.responsibility, secondResponsibility, 'second property was passed as prop');
         });
 
-        it('returns a row with correct offset and md', () => {
+        it('returns a col with correct offset and md', () => {
             let result = ResponsibilityGroupColumn({responsibilities: [], offset: 1, md: 3});
 
-            let row = ShallowTestUtils.findAllWithType(result, Row);
+            let col = ShallowTestUtils.findAllWithType(result, Col);
 
-            assert.strictEqual(row.length, 1, 'one row rendered');
-            assert.strictEqual(row[0].props.mdOffset, 1, 'offset set on row');
-            assert.strictEqual(row[0].props.md, 3, 'md set on row');
+            assert.strictEqual(col.length, 1, 'one col rendered');
+            assert.strictEqual(col[0].props.mdOffset, 1, 'offset set on col');
+            assert.strictEqual(col[0].props.md, 3, 'md set on col');
         });
     });
 });

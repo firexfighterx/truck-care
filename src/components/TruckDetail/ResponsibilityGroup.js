@@ -11,7 +11,7 @@ const ResponsibilityGroup = ({responsibilityItems}) => {
         content = <Label>No Available Details</Label>;
     } else {
         content = (
-            <Grid>
+            <Grid fluid={true}>
                 <Row>
                     <ResponsibilityGroupColumn offset={1} md={3} responsibilities={_.filter(responsibilityItems, (item, index) => {
                         return index % 3 == 0;
