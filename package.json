@@ -1,14 +1,15 @@
 {
-  "name": "Truck-Care ",
+  "name": "Truck-Care",
   "version": "1.0.0",
   "description": "Handles Truck Care Details for FCFD",
   "scripts": {
-    "start": "npm-run-all --parallel test:watch open:src lint:watch",
+    "start": "npm-run-all --parallel test:watcher open:src lint:watch",
     "open:src": "babel-node tools/srcServer.js",
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
     "lint:watch": "npm run lint -- --watch",
     "test": "mocha tools/testSetup.js \"src/tests/**/*Tests.js\"",
-    "test:watch": "npm run test -- --watch",
+    "test:watcher": "npm run test -- --watch",
+    "test:watch": "mocha --watch tools/testSetup.js \"src/tests/**/*Tests.js\"", 
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "node_modules/.bin/rimraf ./dist",
     "build:html": "babel-node tools/buildHtml.js",
