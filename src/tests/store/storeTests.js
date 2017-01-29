@@ -4,7 +4,7 @@ import rootReducer from '../../reducers';
 import initialState from '../../reducers/InitialState';
 import * as truckCareActions from '../../actions/TruckListActions';
 import * as truckCareGroupActions from '../../actions/TruckCareGroupActions';
-import * as globalErrorActions from '../../actions/GlobalErrorActions';
+import * as globalMessageActions from '../../actions/GlobalMessageActions';
 import * as categoryDetailActions from '../../actions/CategoryDetailActions';
 
 describe('Store', function() {
@@ -27,17 +27,17 @@ describe('Store', function() {
     it('should update store with dispatched global error', () => {
         let store = createStore(rootReducer, initialState);
 
-        let globalErrorNotification = {
+        let globalMessage = {
             type: 'danger',
             message: 'Yo this is a message'
         };
 
-        let action = globalErrorActions.setGlobalError(globalErrorNotification);
+        let action = globalMessageActions.setGlobalError(globalMessage);
         store.dispatch(action);
 
-        let actual = store.getState().globalErrorNotification;
+        let actual = store.getState().globalMessage;
 
-        assert.deepEqual(actual, globalErrorNotification, 'global error notification was set on the store');
+        assert.deepEqual(actual, globalMessage, 'global error notification was set on the store');
     });
 
     it('should update store with dispatched truck care group', () => {

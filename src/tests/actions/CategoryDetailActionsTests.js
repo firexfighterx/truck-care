@@ -59,7 +59,7 @@ describe('CategoryDetailActions', () => {
             const expectedActions = [
                 {
                     type: types.SET_GLOBAL_ERROR,
-                    globalErrorNotification: {}
+                    globalMessage: {}
                 }
             ];
 

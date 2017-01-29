@@ -2,7 +2,7 @@ import {push} from 'react-router-redux';
 import {browserHistory} from 'react-router';
 import * as types from './Actions';
 import TruckCareApi from '../api/TruckCareApi';
-import * as GlobalErrorActions from './GlobalErrorActions';
+import * as GlobalMessageActions from './GlobalMessageActions';
 import MessageFactory from '../factories/MessageFactory';
 
 export function loadTrucksSuccess(trucks) {
@@ -18,7 +18,7 @@ export function loadTrucks() {
                 browserHistory.push(url);
             }
         }).catch(error => {
-            dispatch(GlobalErrorActions.setGlobalError(MessageFactory.createGetTrucksFailure()));
+            dispatch(GlobalMessageActions.setGlobalError(MessageFactory.createGetTrucksFailure()));
         });
     };
 }

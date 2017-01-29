@@ -1,6 +1,6 @@
 import * as Actions from './Actions';
 import TruckCareApi from '../api/TruckCareApi';
-import * as GlobalErrorActions from './GlobalErrorActions';
+import * as GlobalMessageActions from './GlobalMessageActions';
 import MessageFactory from '../factories/MessageFactory';
 
 export const loadCategoryDetailsSuccess = (categoryDetails) => {
@@ -12,7 +12,7 @@ export function loadCategoryDetail(truckNumber) {
         return TruckCareApi.getCategoryDetails(truckNumber).then(categoryDetails => {
             dispatch(loadCategoryDetailsSuccess(categoryDetails));
         }).catch(error => {
-            dispatch(GlobalErrorActions.setGlobalError(MessageFactory.createGetCategoryDetailsFailure(truckNumber)));
+            dispatch(GlobalMessageActions.setGlobalError(MessageFactory.createGetCategoryDetailsFailure(truckNumber)));
         });
     };
 }

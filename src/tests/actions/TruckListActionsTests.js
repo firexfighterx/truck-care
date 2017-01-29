@@ -1,7 +1,7 @@
 import sinon from 'sinon';
 import assert from 'assert';
 import * as TruckCareActions from '../../actions/TruckListActions';
-import * as GlobalErrorActions from '../../actions/GlobalErrorActions';
+import * as GlobalMessageActions from '../../actions/GlobalMessageActions';
 import MessageFactory from '../../factories/MessageFactory';
 import TruckCareApi from '../../api/TruckCareApi';
 import * as types from '../../actions/Actions';
@@ -91,7 +91,7 @@ describe('TruckCareActions', () => {
             const expectedActions = [
                 {
                     type: types.SET_GLOBAL_ERROR,
-                    globalErrorNotification: {}
+                    globalMessage: {}
                 }
             ];
 

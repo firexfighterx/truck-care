@@ -2,7 +2,7 @@
 import React, {Component,PropTypes} from 'react';
 import Header from './common/Header';
 import GlobalNotification from './common/GlobalNotification';
-import * as GlobalErrorActions from '../actions/GlobalErrorActions';
+import * as GlobalMessageActions from '../actions/GlobalMessageActions';
 import {Grid, Row, Col} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -19,7 +19,7 @@ _handleCloseGlobalNotification(){
 }
 
 _isGlobalErrorPresent(){
-  return this.props.globalErrorNotification.hasOwnProperty('type') && this.props.globalErrorNotification.hasOwnProperty('message');
+  return this.props.globalMessage.hasOwnProperty('type') && this.props.globalMessage.hasOwnProperty('message');
 }
 
 _handleMenuItemClick(eventKey){
@@ -28,7 +28,7 @@ _handleMenuItemClick(eventKey){
 
 render() {
   let globalNotification = this._isGlobalErrorPresent()
-    ? <GlobalNotification onDismiss={this._handleCloseGlobalNotification.bind(this)} notification={this.props.globalErrorNotification} />
+    ? <GlobalNotification onDismiss={this._handleCloseGlobalNotification.bind(this)} notification={this.props.globalMessage} />
     : null;
 
     return (
@@ -48,7 +48,7 @@ render() {
 App.propTypes = {
     children: PropTypes.object.isRequired,
     trucks: PropTypes.arrayOf(PropTypes.object),
-    globalErrorNotification: PropTypes.object.isRequired,
+    globalMessage: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired
 };
 
@@ -56,13 +56,13 @@ App.propTypes = {
 function mapStateToProps(state, ownProps) {
     return {
         trucks: state.trucks,
-        globalErrorNotification: state.globalErrorNotification
+        globalMessage: state.globalMessage
     };
 }
 
 function mapDispatchToProps(dispatch){
   return{
-    actions: bindActionCreators(GlobalErrorActions, dispatch)
+    actions: bindActionCreators(GlobalMessageActions, dispatch)
   };
 }
 

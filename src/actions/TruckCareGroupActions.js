@@ -1,6 +1,6 @@
 import * as Actions from './Actions';
 import TruckCareApi from '../api/TruckCareApi';
-import * as GlobalErrorActions from './GlobalErrorActions';
+import * as GlobalMessageActions from './GlobalMessageActions';
 import MessageFactory from '../factories/MessageFactory';
 
 export function loadTruckCareGroupSuccess(truckCareGroup) {
@@ -12,7 +12,7 @@ export function updateTruckCareGroupMemberToActive(id) {
         return TruckCareApi.updateTruckCareGroupMemberToActive(id).then(activeGroup => {
             dispatch(loadTruckCareGroupSuccess(activeGroup));
         }).catch(error => {
-            dispatch(GlobalErrorActions.setGlobalError(MessageFactory.createFailedToUpdateMemberStatus()));
+            dispatch(GlobalMessageActions.setGlobalError(MessageFactory.createFailedToUpdateMemberStatus()));
         });
     };
 }
@@ -22,7 +22,7 @@ export function updateTruckCareGroupMemberToInactive(id) {
         return TruckCareApi.updateTruckCareGroupMemberToInactive(id).then(activeGroup => {
             dispatch(loadTruckCareGroupSuccess(activeGroup));
         }).catch(error => {
-            dispatch(GlobalErrorActions.setGlobalError(MessageFactory.createFailedToUpdateMemberStatus()));
+            dispatch(GlobalMessageActions.setGlobalError(MessageFactory.createFailedToUpdateMemberStatus()));
         });
     };
 }
@@ -32,7 +32,7 @@ export function loadTruckCareGroup() {
         return TruckCareApi.getTruckCareGroup().then(activeGroup => {
             dispatch(loadTruckCareGroupSuccess(activeGroup));
         }).catch(error => {
-            dispatch(GlobalErrorActions.setGlobalError(MessageFactory.createGetActiveGroupFailure()));
+            dispatch(GlobalMessageActions.setGlobalError(MessageFactory.createGetActiveGroupFailure()));
         });
     };
 }

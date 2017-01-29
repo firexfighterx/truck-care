@@ -1,10 +1,10 @@
 import sinon from 'sinon';
 import assert from 'assert';
-import * as actions from '../../actions/GlobalErrorActions';
-import GlobalErrorReducer from '../../reducers/GlobalErrorReducer';
+import * as actions from '../../actions/GlobalMessageActions';
+import GlobalMessageReducer from '../../reducers/GlobalMessageReducer';
 
-describe('GlobalErrorReducer', () => {
-    describe('Default GlobalErrorReducer', () => {
+describe('GlobalMessageReducer', () => {
+    describe('Default GlobalMessageReducer', () => {
         it('returns new state when action type is SET_GLOBAL_ERROR', () => {
             let intialState = {};
             let newState = {
@@ -13,7 +13,7 @@ describe('GlobalErrorReducer', () => {
             };
             let action = actions.setGlobalError(newState);
 
-            let result = GlobalErrorReducer(intialState, action);
+            let result = GlobalMessageReducer(intialState, action);
 
             assert.deepEqual(result, newState, 'new state was updated');
         });
@@ -29,7 +29,7 @@ describe('GlobalErrorReducer', () => {
             };
             let action = actions.setGlobalError(newState);
 
-            let result = GlobalErrorReducer(intialState, action);
+            let result = GlobalMessageReducer(intialState, action);
 
             assert.deepEqual(result, newState, 'new state was updated');
         });
@@ -47,7 +47,7 @@ describe('GlobalErrorReducer', () => {
                 notification: newState
             };
 
-            let actual = GlobalErrorReducer(initialState, action);
+            let actual = GlobalMessageReducer(initialState, action);
 
             assert.deepEqual(actual, initialState, 'state remained unchanged for unknown type');
         });

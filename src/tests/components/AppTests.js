@@ -34,13 +34,13 @@ describe('App', () => {
 
     describe('_isGlobalErrorPresent', () => {
       it('returns true when an error is present', () => {
-        let globalErrorNotification = {
+        let globalMessage = {
           type: 'danger',
           message: 'Foo'
         };
 
         let props = {
-          globalErrorNotification
+          globalMessage
         };
 
         let testObject = new App(props);
@@ -51,10 +51,10 @@ describe('App', () => {
       });
 
       it('returns false when an error is not present', () => {
-        let globalErrorNotification = {};
+        let globalMessage = {};
 
         let props = {
-          globalErrorNotification
+          globalMessage
         };
 
         let testObject = new App(props);
@@ -100,7 +100,7 @@ describe('App', () => {
         it('renders a GlobalNotification when an error is present', () => {
           let children = <ul></ul>;
           let trucks = [];
-          let globalErrorNotification = {
+          let globalMessage = {
             type: 'danger',
             message: 'Message'
           };
@@ -108,7 +108,7 @@ describe('App', () => {
           let props = {
               children,
               trucks,
-              globalErrorNotification
+              globalMessage
           };
           let testObject = new App(props);
           let boundHandleCloseGlobalNotification = sandbox.stub(testObject._handleCloseGlobalNotification, 'bind').returns(boundFunction);
@@ -118,7 +118,7 @@ describe('App', () => {
 
           let components = ShallowTestUtils.findAllWithType(result, GlobalNotification);
           assert.strictEqual(components.length, 1, 'one GlobalNotification element was rendered');
-          assert.strictEqual(components[0].props.notification, globalErrorNotification, 'globalNotification prop was passed to GlobalNotification');
+          assert.strictEqual(components[0].props.notification, globalMessage, 'globalMessage prop was passed to GlobalNotification');
           assert.strictEqual(components[0].props.onDismiss, boundFunction, 'bound handle close global notification passed to GlobalNotification');
           assert(boundHandleCloseGlobalNotification.calledOnce, 'called bound handleGetNotification method');
           assert(isGlobalErrorPresent.calledOnce, 'called isGlobalErrorPresent once');

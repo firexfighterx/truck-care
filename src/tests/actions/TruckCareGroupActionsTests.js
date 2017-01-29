@@ -60,7 +60,7 @@ describe('TruckCareGroupActions', () => {
             const expectedActions = [
                 {
                     type: types.SET_GLOBAL_ERROR,
-                    globalErrorNotification: {}
+                    globalMessage: {}
                 }
             ];
 
@@ -107,7 +107,7 @@ describe('TruckCareGroupActions', () => {
             const expectedActions = [
                 {
                     type: types.SET_GLOBAL_ERROR,
-                    globalErrorNotification: {}
+                    globalMessage: {}
                 }
             ];
 
@@ -153,7 +153,7 @@ describe('TruckCareGroupActions', () => {
             const expectedActions = [
                 {
                     type: types.SET_GLOBAL_ERROR,
-                    globalErrorNotification: {}
+                    globalMessage: {}
                 }
             ];
 
