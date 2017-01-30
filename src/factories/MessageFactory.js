@@ -1,5 +1,5 @@
 let createError = (message) => {
-    return {type: 'danger', message};
+    return { type: 'danger', message };
 };
 
 class MessageFactory {
@@ -18,6 +18,10 @@ class MessageFactory {
     static createGetCategoryDetailsFailure(truckNumber) {
         return createError(`Failed to get category details for ${truckNumber}`);
     }
+
+    static createPerformTruckCareSuccess() { }
+
+    static createPerformTruckCareFailure() { }
 }
 
 export default MessageFactory;
