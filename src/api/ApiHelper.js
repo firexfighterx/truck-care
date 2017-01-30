@@ -14,7 +14,9 @@ class ApiHelper {
         return this.performAjax({ url, type: 'PUT', data });
     }
 
-    static post(url, data) { }
+    static post(url, data) {
+        return this.performAjax({ url, type: 'POST', data });
+    }
 }
 
 export default ApiHelper;
