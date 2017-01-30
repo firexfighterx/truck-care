@@ -23,7 +23,9 @@ class TruckCareApi extends ApiHelper {
         return this.get(`http://${EnvironmentUrls.baseUrl}/api/truck/${truckNumber}/category/details`, {});
     }
 
-    static performTruckCare(args) { }
+    static performTruckCare(args) { 
+        return this.post('http://localhost:3000/api/perform/truckcare', args);
+    }
 }
 
 export default TruckCareApi;
