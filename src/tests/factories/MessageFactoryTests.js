@@ -54,4 +54,30 @@ describe('MessageFactory', () => {
             assert.deepEqual(actual, expected, 'returned expected message to display');
         });
     });
+
+    describe('createPerformTruckCareSuccess', () => {
+        it('returns a message to show when successfully performs a truck care', () => {
+            let expected = {
+                type: 'success',
+                message: 'Successfully performed Truck Care'
+            };
+
+            let actual = MessageFactory.createPerformTruckCareSuccess();
+
+            assert.deepEqual(actual, expected, 'returned expected message to display');
+        });
+    });
+
+    describe('createPerformTruckCareFailure', () => {
+        it('returns a message to show when fails to perform a truck care', () => {
+            let expected = {
+                type: 'danger',
+                message: `Failed to perform Truck Care`
+            };
+
+            let actual = MessageFactory.createPerformTruckCareFailure();
+
+            assert.deepEqual(actual, expected, 'returned expected message to display');
+        });
+    });
 });

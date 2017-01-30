@@ -2,6 +2,10 @@ let createError = (message) => {
     return { type: 'danger', message };
 };
 
+let createSuccess = (message) => {
+    return { type: 'success', message };
+};
+
 class MessageFactory {
     static createGetTrucksFailure() {
         return createError('Failed to retreive Truck List');
@@ -19,9 +23,13 @@ class MessageFactory {
         return createError(`Failed to get category details for ${truckNumber}`);
     }
 
-    static createPerformTruckCareSuccess() { }
+    static createPerformTruckCareSuccess() {
+        return createSuccess('Successfully performed Truck Care');
+    }
 
-    static createPerformTruckCareFailure() { }
+    static createPerformTruckCareFailure() {
+        return createError('Failed to perform Truck Care');
+    }
 }
 
 export default MessageFactory;
