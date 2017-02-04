@@ -1,13 +1,14 @@
 import assert from 'assert';
-import {createStore} from 'redux';
+import { createStore } from 'redux';
 import rootReducer from '../../reducers';
 import initialState from '../../reducers/InitialState';
 import * as truckCareActions from '../../actions/TruckListActions';
 import * as truckCareGroupActions from '../../actions/TruckCareGroupActions';
 import * as globalMessageActions from '../../actions/GlobalMessageActions';
 import * as categoryDetailActions from '../../actions/CategoryDetailActions';
+import * as truckIdActions from '../../actions/TruckIdActions';
 
-describe('Store', function() {
+describe('Store', function () {
     it('should update store with dispatched trucks', () => {
         const store = createStore(rootReducer, initialState);
         let trucks = [
@@ -38,6 +39,22 @@ describe('Store', function() {
         let actual = store.getState().globalMessage;
 
         assert.deepEqual(actual, globalMessage, 'global error notification was set on the store');
+    });
+
+    it('should update store with dispatched global success', () => {
+        let store = createStore(rootReducer, initialState);
+
+        let globalMessage = {
+            type: 'success',
+            message: 'There is a snake in my boot'
+        };
+
+        let action = globalMessageActions.setGlobalSuccess(globalMessage);
+        store.dispatch(action);
+
+        let actual = store.getState().globalMessage;
+
+        assert.deepEqual(actual, globalMessage, 'global success notification was set on the store');
     });
 
     it('should update store with dispatched truck care group', () => {
@@ -78,5 +95,18 @@ describe('Store', function() {
         let actual = store.getState().categoryDetails;
 
         assert.deepEqual(actual, categoryDetails, 'category details were set on the store');
+    });
+
+    it('should update store with dispatched truck id', () => {
+        let store = createStore(rootReducer, initialState);
+        let truckId = 2400;
+
+        let action = truckIdActions.setTruckId(truckId);
+
+        store.dispatch(action);
+
+        let actual = store.getState().truckId;
+
+        assert.strictEqual(actual, truckId, 'truckId was set on the store');
     });
 });
