@@ -1,12 +1,13 @@
-import {push} from 'react-router-redux';
-import {browserHistory} from 'react-router';
+import { push } from 'react-router-redux';
+import { browserHistory } from 'react-router';
 import * as types from './Actions';
 import TruckCareApi from '../api/TruckCareApi';
 import * as GlobalMessageActions from './GlobalMessageActions';
+import * as TruckIdActions from './TruckIdActions';
 import MessageFactory from '../factories/MessageFactory';
 
 export function loadTrucksSuccess(trucks) {
-    return {type: types.GET_ALL_TRUCKS_SUCCESS, trucks};
+    return { type: types.GET_ALL_TRUCKS_SUCCESS, trucks };
 }
 
 export function loadTrucks() {
@@ -15,6 +16,7 @@ export function loadTrucks() {
             dispatch(loadTrucksSuccess(trucks));
             if (trucks.length > 0) {
                 let url = `/TruckDetail/${trucks[0].truckNumber}`;
+                dispatch(TruckIdActions.setTruckId(trucks[0].id));
                 browserHistory.push(url);
             }
         }).catch(error => {

@@ -61,6 +61,8 @@ describe('TruckCareActions', () => {
             store.dispatch(TruckCareActions.loadTrucks()).then(() => {
                 const actions = store.getActions();
                 assert.strictEqual(actions[0].type, types.GET_ALL_TRUCKS_SUCCESS);
+                assert.strictEqual(actions[1].type, types.SET_TRUCK_ID);
+                assert.strictEqual(actions[1].truckId, 3456);
                 assert(push.withArgs('/TruckDetail/2400').calledOnce, 'called browserHistory with first truck returned');
                 done();
             });
