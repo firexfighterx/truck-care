@@ -4,7 +4,7 @@ import {ListGroup, Navbar, Nav, NavDropdown, MenuItem} from 'react-bootstrap';
 const Header = ({trucks, dropDownClick}) => {
     let dropDownItems = trucks.map(truck => {
         return (
-            <MenuItem key={truck.id} eventKey={truck.truckNumber}>
+            <MenuItem key={truck.id} eventKey={truck}>
                 {truck.truckNumber}
             </MenuItem>
         );
