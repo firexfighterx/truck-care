@@ -33,9 +33,9 @@ describe('TruckCareGroupActions', () => {
         });
     });
 
-    describe('updateTruckCareGroupMemberToActive', (done) => {
+    describe('updateTruckCareGroupMemberToActive', () => {
         const mockStore = configureMockStore([thunk]);
-        it('dispatches LOAD_TRUCK_CARE_GROUP_SUCCESS after update member to active', () => {
+        it('dispatches LOAD_TRUCK_CARE_GROUP_SUCCESS after update member to active', (done) => {
             const expectedActions = [
                 {
                     type: types.LOAD_TRUCK_CARE_GROUP_SUCCESS,

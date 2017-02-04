@@ -2,5 +2,6 @@ export default {
     trucks : [],
     globalMessage : {},
     truckCareGroup : {},
-    categoryDetails : []
+    categoryDetails : [],
+    truckId: 0
 };
