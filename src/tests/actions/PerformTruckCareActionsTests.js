@@ -29,7 +29,7 @@ describe('PerformTruckCareActions', () => {
             store.dispatch(Actions.performTruckCare(args)).then(() => {
                 const actions = store.getActions();
                 assert.strictEqual(actions[0].type, types.SET_GLOBAL_SUCCESS);
-                assert.deepEqual(actions[0].globalMessage, message)
+                assert.deepEqual(actions[0].globalMessage, message);
                 assert(performTruckCare.withArgs(args).calledOnce, 'called api with passed in args');
                 assert(createPerformTruckCareSuccess.calledOnce, 'called createPerformTruckCareSuccess to get message to display');
                 done();
@@ -45,7 +45,7 @@ describe('PerformTruckCareActions', () => {
             store.dispatch(Actions.performTruckCare(args)).then(() => {
                 const actions = store.getActions();
                 assert.strictEqual(actions[0].type, types.SET_GLOBAL_ERROR);
-                assert.deepEqual(actions[0].globalMessage, message)
+                assert.deepEqual(actions[0].globalMessage, message);
                 assert(createPerformTruckCareFailure.calledOnce, 'called createPerformTruckCareFailure to get message to display');
                 done();
             });
