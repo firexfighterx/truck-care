@@ -3,6 +3,7 @@ import React, {Component,PropTypes} from 'react';
 import Header from './common/Header';
 import GlobalNotification from './common/GlobalNotification';
 import * as GlobalMessageActions from '../actions/GlobalMessageActions';
+import * as TruckIdActions from '../actions/TruckIdActions';
 import {Grid, Row, Col} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -23,7 +24,8 @@ _isGlobalErrorPresent(){
 }
 
 _handleMenuItemClick(eventKey){
-  browserHistory.push(`/TruckDetail/${eventKey}`);
+  browserHistory.push(`/TruckDetail/${eventKey.truckNumber}`);
+  this.props.truckIdActions.setTruckId(eventKey.id);
 }
 
 render() {
@@ -62,7 +64,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch){
   return{
-    actions: bindActionCreators(GlobalMessageActions, dispatch)
+    actions: bindActionCreators(GlobalMessageActions, dispatch), 
+    truckIdActions: bindActionCreators(TruckIdActions, dispatch)
   };
 }
 
