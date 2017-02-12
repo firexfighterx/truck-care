@@ -91,12 +91,12 @@ describe('TruckCareApi', () => {
         it('posts args to perform a truck care', () => {
             const postResponse = {};
             const url = 'http://localhost:3000/api/perform/truckcare';
-            const args = {foo: 'bar'};
+            const args = { foo: "bar" };
 
             let apiHelperPost = sandbox.stub(TruckCareApi, 'post').returns(postResponse);
 
             let result = TruckCareApi.performTruckCare(args);
-            assert(apiHelperPost.withArgs(url, args).calledOnce, 'called api helper\'s post method');
+            assert(apiHelperPost.withArgs(url, JSON.stringify(args)).calledOnce, 'called api helper\'s post method');
             assert.deepEqual(result, postResponse);
         });
     });

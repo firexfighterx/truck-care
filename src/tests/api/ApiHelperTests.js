@@ -76,7 +76,8 @@ describe('ApiHelper', () => {
             let expectedRequest = {
                 url: url,
                 type: 'POST',
-                data: data
+                data,
+                contentType: 'application/JSON'
             };
             let performAjaxReturnValue = {};
             let performAjax = sandbox.stub(ApiHelper, 'performAjax').returns(performAjaxReturnValue);

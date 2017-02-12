@@ -24,7 +24,7 @@ class TruckCareApi extends ApiHelper {
     }
 
     static performTruckCare(args) { 
-        return this.post('http://localhost:3000/api/perform/truckcare', args);
+        return this.post('http://localhost:3000/api/perform/truckcare', JSON.stringify(args));
     }
 }
 

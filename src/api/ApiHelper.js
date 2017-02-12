@@ -15,7 +15,7 @@ class ApiHelper {
     }
 
     static post(url, data) {
-        return this.performAjax({ url, type: 'POST', data });
+        return this.performAjax({ url, type: 'POST', contentType: 'application/JSON', data });
     }
 }
 
