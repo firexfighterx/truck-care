@@ -51,7 +51,8 @@ App.propTypes = {
     children: PropTypes.object.isRequired,
     trucks: PropTypes.arrayOf(PropTypes.object),
     globalMessage: PropTypes.object.isRequired,
-    actions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    truckIdActions: PropTypes.object.isRequired
 };
 
 

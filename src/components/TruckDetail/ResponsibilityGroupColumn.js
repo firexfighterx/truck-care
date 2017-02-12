@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import Responsibility from './Responsibility';
+import Responsibility from './Responsibility';//eslint-disable-line import/no-named-as-default
 import {Col} from 'react-bootstrap';
 
 const ResponsibilityGroupColumn = ({responsibilities, offset, md}) => {

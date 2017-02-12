@@ -2,7 +2,7 @@ import assert from 'assert';
 import * as ShallowTestUtils from 'react-shallow-testutils';
 import {Col} from 'react-bootstrap';
 import ResponsibilityGroupColumn from '../../../components/TruckDetail/ResponsibilityGroupColumn';
-import Responsibility from '../../../components/TruckDetail/Responsibility';
+import Responsibility from '../../../components/TruckDetail/Responsibility';//eslint-disable-line import/no-named-as-default
 
 describe('ResponsibilityGroupColumn', () => {
     describe('render', () => {

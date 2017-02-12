@@ -1,3 +1,4 @@
+/*eslint-disable react/jsx-no-bind */
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -15,7 +16,7 @@ export class Responsibility extends Component {
       responsibilityId: this.props.responsibility.responsibilityId,
       truckId: this.props.truckId,
       outcome: true
-    }
+    };
 
     this.props.actions.performTruckCare(args);
   }
@@ -44,7 +45,10 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 Responsibility.propTypes = {
-  responsibility: PropTypes.object
+  responsibility: PropTypes.object, 
+  users: PropTypes.arrayof(PropTypes.number),
+  truckId: PropTypes.number,
+  actions: PropTypes.object
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Responsibility);

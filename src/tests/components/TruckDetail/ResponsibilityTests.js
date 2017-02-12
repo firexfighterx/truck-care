@@ -31,7 +31,7 @@ describe('Responsibility', () => {
             let testObject = new Responsibility({ users, responsibility, truckId, actions: { performTruckCare } });
 
             testObject._handleThumbsUpButtonClick();
-            assert(performTruckCare.withArgs(expected).calledOnce, 'called action creator method')
+            assert(performTruckCare.withArgs(expected).calledOnce, 'called action creator method');
         });
     });
 
