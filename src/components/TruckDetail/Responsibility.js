@@ -46,7 +46,7 @@ const mapDispatchToProps = (dispatch) => {
 
 Responsibility.propTypes = {
   responsibility: PropTypes.object, 
-  users: PropTypes.arrayof(PropTypes.number),
+  users: PropTypes.arrayOf(PropTypes.number),
   truckId: PropTypes.number,
   actions: PropTypes.object
 };
