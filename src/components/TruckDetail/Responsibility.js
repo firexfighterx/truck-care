@@ -1,9 +1,8 @@
 /*eslint-disable react/jsx-no-bind */
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import * as responsibilityConnect from './ResponsibilityConnect';
 import { Panel, Button } from 'react-bootstrap';
-import * as Actions from '../../actions/PerformTruckCareActions';
 
 export class Responsibility extends Component {
   constructor(props){
@@ -30,20 +29,6 @@ export class Responsibility extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  let users = state.truckCareGroup.activeMembers.map(user => {return user.id;});
-  return {
-    truckId: state.truckId,
-    users
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(Actions, dispatch)
-  };
-};
-
 Responsibility.propTypes = {
   responsibility: PropTypes.object, 
   users: PropTypes.arrayOf(PropTypes.number),
@@ -51,4 +36,4 @@ Responsibility.propTypes = {
   actions: PropTypes.object
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Responsibility);
+export default connect(responsibilityConnect.mapStateToProps, responsibilityConnect.mapDispatchToProps)(Responsibility);
