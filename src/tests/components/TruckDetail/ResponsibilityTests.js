@@ -15,7 +15,7 @@ describe('Responsibility', () => {
     });
 
     describe('_handleThumbsUpButtonClick', () => {
-        it('calls action creator to perform truckCare', () => {
+        it('calls action creator to perform a thumbs up truckCare', () => {
             const users = [1, 2];
             const responsibilityId = 10;
             const truckId = 3;
@@ -30,7 +30,7 @@ describe('Responsibility', () => {
 
             let testObject = new Responsibility({ users, responsibility, truckId, actions: { performTruckCare } });
 
-            testObject._handleThumbsUpButtonClick();
+            testObject._handleThumbsUpButtonClick(true);
             assert(performTruckCare.withArgs(expected).calledOnce, 'called action creator method');
         });
     });
@@ -51,7 +51,7 @@ describe('Responsibility', () => {
             assert.strictEqual(panel[0].props.header, responsibility.responsibility, 'responsibility text set as panel header');
         });
 
-        it('renders a perform TruckCare Button', () => {
+        it('renders a perform TruckCare thumbs up Button', () => {
             let responsibility = {
                 responsibilityId: 1,
                 responsibility: "Truck Inventory"
@@ -63,7 +63,8 @@ describe('Responsibility', () => {
             let result = testObject.render();
 
             let button = ShallowTestUtils.findAllWithType(result, Button);
-
+            
+            assert(boundHandleThumbsUpClick.withArgs(testObject, true).calledOnce, 'called with testObject and true');
             assert.strictEqual(button.length, 1, 'one button rendered');
             assert.strictEqual(button[0].props.className, 'glyphicon glyphicon-thumbs-up', 'thumbs up set as classname');
             assert.strictEqual(button[0].props.onClick, boundThumbsUp, 'boundHandleThumbsUpClick was set as callback handler');

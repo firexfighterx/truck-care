@@ -9,12 +9,12 @@ export class Responsibility extends Component {
     super(props);
   }
 
-  _handleThumbsUpButtonClick() { 
+  _handleThumbsUpButtonClick(outcome) { 
     let args = {
       users: this.props.users, 
       responsibilityId: this.props.responsibility.responsibilityId,
       truckId: this.props.truckId,
-      outcome: true
+      outcome
     };
 
     this.props.actions.performTruckCare(args);
@@ -23,7 +23,7 @@ export class Responsibility extends Component {
   render() {
     return (
       <Panel header={this.props.responsibility.responsibility}>
-        <Button bsStyle="success" className="glyphicon glyphicon-thumbs-up" onClick={this._handleThumbsUpButtonClick.bind(this)} />
+        <Button bsStyle="success" className="glyphicon glyphicon-thumbs-up" onClick={this._handleThumbsUpButtonClick.bind(this, true)} />
       </Panel>
     );
   }
